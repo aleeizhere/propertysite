@@ -11,6 +11,9 @@ module.exports = {
         white:'#FFFFFF',
         creamWhite:'#F6F7F9',
         darkBlue:'#121C30',
+      },
+      backgroundImage:{
+        'hero-image':'url("./assets/onboarding-dark.jpg")'
       }
     },
   },

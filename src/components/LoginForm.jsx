@@ -7,9 +7,9 @@ const LoginForm = () => {
   return (
     <div className="w-11/12 md:w-4/5 m-auto">
                 
-    <div className={`${styles.flexCenter} p-10`}>
-        <img src={logo} alt="" />
-    </div>
+      <div className={`${styles.flexCenter} p-10`}>
+          <img src={logo} alt="" />
+      </div>
         
     <h1 className={`${styles.boldText} mb-2`}>Email Address</h1>
     {/* Input comp */}
@@ -33,7 +33,7 @@ const LoginForm = () => {
     </div>
     
 
-</div>
+  </div>
   )
 }
 
