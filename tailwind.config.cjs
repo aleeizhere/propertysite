@@ -14,7 +14,10 @@ module.exports = {
       },
       backgroundImage:{
         'hero-image':'url("./assets/onboarding-dark.jpg")'
-      }
+      },
+      outline: {
+        'PhoneInputInput': 'none',
+      },
     },
   },
   plugins: [],
