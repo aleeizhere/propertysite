@@ -1,22 +1,28 @@
 import React, { useState } from 'react'
-import 'react-phone-number-input/style.css'
-import PhoneInput from 'react-phone-number-input'
-import { isValidPhoneNumber } from 'react-phone-number-input'
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
 
 const PhoneNumInput = () => {
     const [value, setValue] = useState()
 
     return (
-        <div className='border border-gray-400 pl-3 p-2 w-full rounded-lg placeholder:text-sm'>
+        <div className=''>
             <PhoneInput
+                inputProps={{
+                    name: 'phone',
+                    required: true,
+                    autoFocus: true
+                }}
+                containerClass="border-[1px] border-gray-400 rounded-lg placeholder:text-sm "
+                inputStyle={{
+                    border:'none'
+                }}
                 placeholder="Enter phone number"
                 value={value}
-                defaultCountry="BD"
-                onChange={setValue} />
-                <h1>{value}</h1>
-                {value && isValidPhoneNumber(value) && (
-                    <h1>VALID</h1>
-                )}
+                country={'bd'}
+                onChange={setValue} 
+                />
+                {/* <h1>{value}</h1> */}
         </div>
     )
 }
