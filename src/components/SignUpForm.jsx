@@ -14,8 +14,7 @@ const SignUpForm = () => {
                         <h1 className={`${styles.boldText}  mb-2`}>Name</h1>
                         <InputField
                             type="text"
-                            
-                            />
+                        />
                     </div>
 
                     <div className="pt-10">

@@ -12,7 +12,7 @@ const Login = () => {
                 <LoginForm />
             </div>
 
-            <div className={`text-white z-50 md:mt-10 hidden md:${styles.flexCenter} flex-col`}>
+            <div className={`text-white z-50 md:mt-10 hidden md:flex justify-center items-center flex-col`}>
                 <h1 className={`${styles.boldText}`}>Don’t have an account <span className='text-[#41CE8E] cursor-pointer'>Join us today</span> </h1>
                 <h1 className='font-normal text-xs mb-20 pt-3'>Regulated by the DFSA</h1>
             </div>

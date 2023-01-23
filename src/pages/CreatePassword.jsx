@@ -19,7 +19,7 @@ const CreatePassword = () => {
             <div className="p-0 flex ">
                 {/* Left Side confirm email Comp */}
                 <div className="w-full lg:w-1/2">
-                    {/* <div className={`${styles.flexCenter} bg-darkBlue shadow-sm p-3`}>
+                    <div className={`${styles.flexCenter} bg-darkBlue shadow-sm p-3`}>
                         <h1 className={`${styles.boldText} text-lightGreen`}>Your email has been verified!</h1>
                     </div>
 
@@ -44,15 +44,17 @@ const CreatePassword = () => {
 
                             <CustomButton text={"Create Account"} />
                         </div>
-                    </div> */}
+                    </div>
 
-                    <PasswordComp 
+                    {/* <PasswordComp 
                     verifiedText="Your email has been verified!"
                     heading="Create Password"
                     listData={listData}
                     btnText="Create Account"
                     
-                    />
+                    /> */}
+
+                    
 
                 </div>
 

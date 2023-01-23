@@ -6,7 +6,7 @@ const PhoneNumInput = () => {
     const [value, setValue] = useState()
 
     return (
-        <div className=''>
+        <>
             <PhoneInput
                 inputProps={{
                     name: 'phone',
@@ -23,7 +23,7 @@ const PhoneNumInput = () => {
                 onChange={setValue} 
                 />
                 {/* <h1>{value}</h1> */}
-        </div>
+        </>
     )
 }
 

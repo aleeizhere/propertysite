@@ -3,6 +3,7 @@ import CreatePassword from "./pages/CreatePassword"
 import Login from "./pages/Login"
 import PhoneNumber from "./pages/PhoneNumber"
 import SignUp from "./pages/SignUp"
+import VerfiyPhone from "./pages/VerfiyPhone"
 
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
       {/* <SignUp /> */}
       {/* <ConfirmEmail /> */}
       {/* <CreatePassword /> */}
-      <PhoneNumber />
+      {/* <PhoneNumber /> */}
+      <VerfiyPhone />
     </>
   )
 }
