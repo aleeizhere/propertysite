@@ -1,5 +1,5 @@
 import styles from "../style"
-import logo from '../assets/stake-white.svg'
+import logo from '../assets/stake-logo.svg'
 import HeroImgComp from "../components/HeroImgComp"
 import SignUpForm from "../components/SignUpForm"
 

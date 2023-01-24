@@ -1,3 +1,4 @@
+import { useRef } from "react"
 import styles from "../style"
 import logo from '../assets/stake-logo.svg'
 import HeroImgComp from "../components/HeroImgComp"
@@ -5,15 +6,29 @@ import email from '../assets/email.svg'
 import InputField from "../components/InputField"
 import CustomButton from "../components/CustomButton"
 import PasswordComp from "../components/PasswordComp"
+import { useNavigate } from "react-router-dom"
 
 const listData = [
     { id: 1, text: 'Minimum characters of 8 length' },
     { id: 2, text: 'Atleast one uppercase characters is required' },
     { id: 3, text: 'Atleast one lowercase characters is required' },
-    {id: 4, text : 'Number Character(s) is required'}
-  ];
+    { id: 4, text: 'Number Character(s) is required' }
+];
 
 const CreatePassword = () => {
+    
+    const navigate = useNavigate();
+
+    const passwordRef = useRef('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log({
+            password: passwordRef.current.value,
+        })
+        navigate("/phNumber")
+    }
+
     return (
         <>
             <div className="p-0 flex ">
@@ -31,18 +46,23 @@ const CreatePassword = () => {
                             <div className="text-gray-600 mb-6">
 
                                 <h1 className="pt-12 pb-3 text-xl">Password</h1>
-                                <InputField type={'password'} placeholder="Strong-password123#." />
+                                <form action="" onSubmit={handleSubmit}>
+                                    <InputField refs={passwordRef} type={'password'} placeholder="Strong-password123#." />
 
-                                <h1 className="p-2">Password should have:</h1>
-                                <ul class="list-disc ml-4 md:text-sm text-lg">
-                                    <li class="">Minimum characters of 8 length</li>
-                                    <li class="">Atleast one uppercase characters is required</li>
-                                    <li class="">Atleast one lowercase characters is required</li>
-                                    <li class="">Number Character(s) is required</li>
-                                </ul>
+                                    <h1 className="p-2">Password should have:</h1>
+                                    <ul class="list-disc ml-4 md:text-sm text-lg">
+                                        <li class="">Minimum characters of 8 length</li>
+                                        <li class="">Atleast one uppercase characters is required</li>
+                                        <li class="">Atleast one lowercase characters is required</li>
+                                        <li class="">Number Character(s) is required</li>
+                                    </ul>
+                                    <CustomButton type={"submit"} text={"Create Account"} />
+                                    {/* <button type="submit" className={`bg-lightGreen p-2 w-full rounded-lg text-white mt-5 ${styles.flexCenter} ${styles.boldText}`}>
+                                        "Create Account"
+                                    </button> */}
+                                </form>
                             </div>
 
-                            <CustomButton text={"Create Account"} />
                         </div>
                     </div>
 
@@ -53,8 +73,6 @@ const CreatePassword = () => {
                     btnText="Create Account"
                     
                     /> */}
-
-                    
 
                 </div>
 

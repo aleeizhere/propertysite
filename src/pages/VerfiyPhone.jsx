@@ -7,13 +7,26 @@ import CustomButton from "../components/CustomButton"
 import PasswordComp from "../components/PasswordComp"
 import PhoneNumInput from "../components/PhoneNumInput"
 import Timer from "../components/Timer"
+import { Link, useNavigate } from "react-router-dom"
 
 
 const VerfiyPhone = () => {
+
+    const navigate = useNavigate();
+
+    const num = localStorage.getItem('num');
+    
+    
     let enable;
     const handleTimeEnd = () => {
         console.log('Time is up!');
-         enable = true
+        enable = true
+      }
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("verified")
+        navigate("/homePage")
       }
 
     return (
@@ -27,20 +40,33 @@ const VerfiyPhone = () => {
 
                             <h1 className={`${styles.boldText} text-xl md:text-4xl`}>Verify Phone Number</h1>
 
-                            <div className="py-14">
-                                <h1 className="pb-5 text-gray-600">Please enter the one time password (OTP) sent to you {"+82 415 485 548"}</h1>
-                                <h1 className="pb-5 text-gray-600">The Otp will expire in {<Timer time="15"/>}</h1>
+                            <div className="py-20">
+                                
+                                <h1 className="pb-5 text-gray-600">Please enter the one time password (OTP) sent to you {num}</h1>
+                                <h1 className="pb-5 text-gray-600">The Otp will expire in {<Timer time="180"/>}</h1>
 
 
-                                <InputField
-                                    type="text"
-                                />
-                            </div>
+                                <form action="" onSubmit={handleSubmit}>
+
+                                    <InputField
+                                        type="number"
+                                        />
+                                
                             <div className="text-sm">
                                 <h1 className="pb-5 text-gray-600 flex items-center justify-end"> ({<Timer time="10" onTimeEnd={handleTimeEnd} />})&nbsp; <span className={`text-lightGreen cursor-pointer font-semibold ${enable ? 'opacity-100' : 'opacity-40'}`}>Resend Otp</span></h1>
-                                <h1 className="flex justify-end items-center">Didn't recieve OTP? &nbsp; <span className={`text-lightGreen cursor-pointer ${styles.boldText}`}> Skip this step</span></h1>
+                                <h1 className="flex justify-end items-center">Didn't recieve OTP? &nbsp; <Link to={"/homePage"} className={`text-lightGreen cursor-pointer ${styles.boldText}`}> Skip this step</Link></h1>
                             </div>
-                            <CustomButton text="Next" />
+                            
+                            <CustomButton type="submit" text="Next" />
+                            
+                            </form>
+
+                            </div>
+
+
+
+
+                        
                         </div>
                     </div>
 

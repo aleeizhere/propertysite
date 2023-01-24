@@ -1,6 +1,6 @@
 import React from 'react'
 
-const InputField = ({type, placeholder}) => {
+const InputField = ({type, placeholder,refs}) => {
     return (
         <div>
             <input
@@ -8,6 +8,7 @@ const InputField = ({type, placeholder}) => {
             type={type}
             placeholder={placeholder}
             required
+            ref={refs}
             />
         </div>
     )
