@@ -25,7 +25,7 @@ const HomePage = () => {
   ];
 
   return (
-    <Layout className='h-full w-full' >
+    <Layout className='' >
       <Sider
         theme='light'
         width={"270px"}
@@ -40,7 +40,7 @@ const HomePage = () => {
       >
         <div className="logo" />
         <Menu theme="light"
-          className='h-screen '
+          // className='h-screen '
           mode="inline"
           defaultSelectedKeys={['1']}>
 
@@ -48,7 +48,6 @@ const HomePage = () => {
             <img src={logo} alt="" />
           </Menu.Item>
           <Divider />
-          {/* <h1>fukk</h1> */}
           {menus.map((menu, i) => (
             <Menu.Item >
               <div key={i} className="flex items-center text-lg gap-3.5 font-medium">
@@ -63,8 +62,6 @@ const HomePage = () => {
               <Avatar icon={<UserOutlined />} />
               <h1 className='text-lg font-medium'>Mark</h1>
             </div>
-
-
           </Menu.Item>
         </Menu>
       </Sider>
@@ -76,16 +73,17 @@ const HomePage = () => {
         /> */}
         <Content
           style={{
-            margin: '24px 16px 0',
+            margin: '25px 10px 0',
           }}
         >
           <div
             style={{
-              padding: 23,
+              // padding: 23,
               minHeight: 360,
             }}
+            className="p-2 md:p-6 lg:p-8 "
           >
-            <h1 className={`${styles.boldText} text-3xl`}>Properties</h1>
+            <h1 className={`${styles.boldText} text-lightGreen text-center text-3xl`}>Properties</h1>
             <div>
               <PropertiesTabs />
             </div>

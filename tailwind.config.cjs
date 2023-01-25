@@ -7,10 +7,10 @@ module.exports = {
   theme: {
     extend: {
       colors:{
-        lightGreen: '#41CE8E',
+        lightGreen: '#4f46e5',
         white:'#FFFFFF',
         creamWhite:'#F6F7F9',
-        darkBlue:'#121C30',
+        darkBlue:'#171717',
       },
       backgroundImage:{
         'hero-image':'url("./assets/onboarding-dark.jpg")'

@@ -11,15 +11,17 @@ const PropertiesTabs = () => {
         setActiveTab(key);
     };
     return (
-        <div className='flex justify-center items-center '>
+        <div className=''>
             <Tabs activeKey={activeTab}
+                centered
                 onChange={handleTabChange}
                 defaultActiveKey="1"
                 tabBarGutter={90}
-                tabBarStyle={{ backgroundColor: 'white', width: '23rem', paddingLeft: "20px", marginTop: "40px", borderRadius: "25px" }}
+                tabBarStyle={{ marginTop: "40px"}}
 
             >
                 <TabPane
+
                     // tab={<span className={`${activeTab === '1' ? 'bg-lightGreen p-2 rounded-xl text-white' : 'text-gray-600'}`}>Tab 1</span>}
                     tab="Available"
                     key="1"

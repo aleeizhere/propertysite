@@ -4,7 +4,7 @@ import styles from '../style'
 
 const PropertyCard = ({ name, type, country, price, investors, annualReturn, fundedDate, CurrentValue }) => {
     return (
-        <div class="sm:w-1/2 lg:w-[32%] mb-10 mx-2 bg-white rounded-xl">
+        <div class="sm:w-1/2 lg:w-[30%] mb-10 mx-2 bg-white rounded-xl">
             <div class="rounded-lg h-64 overflow-hidden">
                 <img alt="content" class="object-cover object-center h-full w-full" src={property} />
             </div>
