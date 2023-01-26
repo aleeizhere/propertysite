@@ -7,6 +7,7 @@ import Login from "./pages/Login"
 import PhoneNumber from "./pages/PhoneNumber"
 import SignUp from "./pages/SignUp"
 import VerfiyPhone from "./pages/VerfiyPhone"
+import Portfolio from "./pages/Portfolio"
 
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
         <Route path="/verifyNum" element={<VerfiyPhone/>}/>
         <Route path="/homePage" element={<HomePage/>}/>
         <Route path="/wallet" element={<Wallet/>}/>
+        <Route path="/portfolio" element={<Portfolio/>}/>
+
       </Routes>
     </>
   )

@@ -20,7 +20,7 @@ const SidebarLayout = ({component,selectedKey}) => {
   const menus = [
     { name: "Properties", icon: WalletOutlined, linkTo: "/homePage" },
     { name: "Wallet", icon: WalletOutlined, linkTo:"/wallet" },
-    { name: "Portfolio", icon: LineChartOutlined },
+    { name: "Portfolio", icon: LineChartOutlined, linkTo:"/portfolio" },
     { name: "Rewards", icon: StarOutlined },
     { name: "My cart", icon: ShoppingCartOutlined },
 

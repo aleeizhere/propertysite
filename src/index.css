@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .iconStyle {
+      @apply text-4xl text-lightGreen;
+    }
+
+    .iconStyleLg {
+        @apply text-6xl text-lightGreen;
+      }
+  }
