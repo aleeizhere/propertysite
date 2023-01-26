@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Tabs } from 'antd'
-import AvailableProperties from './AvailableProperties';
-
+import AvailableProperties from '../components/AvailableProperties';
+import styles from '../style';
 const { TabPane } = Tabs;
 
 const PropertiesTabs = () => {
@@ -12,10 +12,12 @@ const PropertiesTabs = () => {
     };
     return (
         <div className=''>
+            <h1 className={`${styles.boldText} text-lightGreen text-center text-3xl`}>Properties</h1>
             <Tabs activeKey={activeTab}
                 centered
                 onChange={handleTabChange}
-                defaultActiveKey="1"
+                // defaultActiveKey="2"
+                defaultChecked="1"
                 tabBarGutter={90}
                 tabBarStyle={{ marginTop: "40px"}}
 

@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom"
+import Wallet from "./pages/Wallet"
 import ConfirmEmail from "./pages/ConfirmEmail"
 import CreatePassword from "./pages/CreatePassword"
 import HomePage from "./pages/HomePage"
@@ -20,8 +21,7 @@ function App() {
         <Route path="/phNumber" element={<PhoneNumber/>}/>
         <Route path="/verifyNum" element={<VerfiyPhone/>}/>
         <Route path="/homePage" element={<HomePage/>}/>
-
-
+        <Route path="/wallet" element={<Wallet/>}/>
       </Routes>
     </>
   )

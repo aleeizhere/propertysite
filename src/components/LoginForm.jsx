@@ -17,7 +17,7 @@ const LoginForm = () => {
     email: emailRef.current.value,
     password: passwordRef.current.value
 })
-  // navigate("/signup")
+  navigate("/homePage")
   }
 
   return (
