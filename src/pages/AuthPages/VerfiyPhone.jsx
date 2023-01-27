@@ -1,12 +1,8 @@
-import styles from "../style"
-import logo from '../assets/stake-logo.svg'
-import HeroImgComp from "../components/HeroImgComp"
-import email from '../assets/email.svg'
-import InputField from "../components/InputField"
-import CustomButton from "../components/CustomButton"
-import PasswordComp from "../components/PasswordComp"
-import PhoneNumInput from "../components/PhoneNumInput"
-import Timer from "../components/Timer"
+import styles from "../../style"
+import HeroImgComp from "../../components/HeroImgComp"
+import InputField from "../../components/InputField"
+import CustomButton from "../../components/CustomButton"
+import Timer from "../../components/Timer"
 import { Link, useNavigate } from "react-router-dom"
 
 

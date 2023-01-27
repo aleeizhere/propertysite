@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Tabs } from 'antd'
-import AvailableProperties from '../components/AvailableProperties';
-import styles from '../style';
+import AvailableProperties from '../../components/AvailableProperties';
+import styles from '../../style';
 const { TabPane } = Tabs;
 
 const PropertiesTabs = () => {

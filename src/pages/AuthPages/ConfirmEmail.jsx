@@ -1,8 +1,8 @@
-import styles from "../style"
-import logo from '../assets/stake-logo.svg'
-import HeroImgComp from "../components/HeroImgComp"
-import email from '../assets/email.svg'
-import CustomButton from "../components/CustomButton"
+import styles from "../../style"
+import logo from '../../assets/stake-logo.svg'
+import HeroImgComp from "../../components/HeroImgComp"
+import email from '../../assets/email.svg'
+import CustomButton from "../../components/CustomButton"
 import { Link } from "react-router-dom"
 const ConfirmEmail = () => {
     const useremail = localStorage.getItem('email');

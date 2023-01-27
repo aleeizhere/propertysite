@@ -1,8 +1,8 @@
-import InputField from '../components/InputField'
-import logo from '../assets/stake-logo.svg'
-import CustomButton from '../components/CustomButton'
-import styles from '../style.js'
-import LoginForm from '../components/LoginForm'
+import InputField from '../../components/InputField'
+import logo from '../../assets/stake-logo.svg'
+import CustomButton from '../../components/CustomButton'
+import styles from '../../style.js'
+import LoginForm from '../../components/LoginForm'
 import { Link } from 'react-router-dom'
 
 const Login = () => {

@@ -3,7 +3,7 @@ import logo from '../assets/stake-logo.svg'
 import styles from '../style';
 import { WalletOutlined, LineChartOutlined, StarOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
 import { Layout, Menu, Divider, Avatar, Tabs } from 'antd';
-import PropertiesTabs from '../pages/PropertiesTabs';
+import PropertiesTabs from '../pages/properties/PropertiesTabs';
 import { Link } from 'react-router-dom';
 const { Content, Sider } = Layout;
 const { TabPane } = Tabs;
@@ -22,7 +22,7 @@ const SidebarLayout = ({component,selectedKey}) => {
     { name: "Wallet", icon: WalletOutlined, linkTo:"/wallet" },
     { name: "Portfolio", icon: LineChartOutlined, linkTo:"/portfolio" },
     { name: "Rewards", icon: StarOutlined },
-    { name: "My cart", icon: ShoppingCartOutlined },
+    { name: "My cart", icon: ShoppingCartOutlined, linkTo:"/cart" },
 
   ];
 

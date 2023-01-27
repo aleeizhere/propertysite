@@ -1,6 +1,6 @@
 import React from 'react'
 import PropertiesTabs from './PropertiesTabs'
-import SidebarLayout from '../components/SidebarLayout'
+import SidebarLayout from '../../components/SidebarLayout'
 
 const HomePage = () => {
   return (

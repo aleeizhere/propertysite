@@ -1,9 +1,8 @@
 import React from 'react'
-import styles from '../style';
-import BalanceCard from '../components/BalanceCard';
-import TransactionTable from '../components/TransactionTable';
+import styles from '../../style';
+import BalanceCard from '../../components/BalanceCard';
 import { CreditCardOutlined, StarOutlined } from '@ant-design/icons';
-import CustomButton from '../components/CustomButton';
+import CustomButton from '../../components/CustomButton';
 import { Table } from 'antd';
 
 const data = [

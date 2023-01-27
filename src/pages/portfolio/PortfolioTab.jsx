@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import CustomButton from '../components/CustomButton';
-import styles from '../style';
-import BalanceCard from '../components/BalanceCard'
+import CustomButton from '../../components/CustomButton';
+import styles from '../../style';
+import BalanceCard from '../../components/BalanceCard'
 import { RiseOutlined, HomeOutlined, CalendarOutlined, BarChartOutlined } from '@ant-design/icons';
-import InsightsCard from '../components/InsightsCard';
+import InsightsCard from '../../components/InsightsCard';
 import { Table } from 'antd';
 
 const data = [
@@ -83,8 +83,8 @@ const PortfolioTab = () => {
             <h1 className={`${styles.boldText} text-lightGreen text-center text-3xl mt-12`}>Key financials</h1>
 
             <div className='flex flex-col gap-y-3 md:flex-row justify-between mt-12'>
-                <BalanceCard heading="Monthly income (Jan 2023)" rentEarned="Taka 15000" icon={<RiseOutlined className='iconStyleLg' />} />
-                <BalanceCard heading="Total income (As of Jan 2023)" rentEarned="Taka 45000" icon={<RiseOutlined className='iconStyleLg' />} />
+                <BalanceCard heading="Monthly income (Jan 2023)" amount="Taka 15000" icon={<RiseOutlined className='iconStyleLg' />} />
+                <BalanceCard heading="Total income (As of Jan 2023)" amount="Taka 45000" icon={<RiseOutlined className='iconStyleLg' />} />
             </div>
 
 
@@ -93,9 +93,9 @@ const PortfolioTab = () => {
             <h1 className={`${styles.boldText} text-lightGreen text-center text-3xl mt-12`}>Quick insights</h1>
 
             <div className='flex flex-col gap-y-3 md:flex-row justify-between mt-12'>
-                <InsightsCard heading="Number of Properties" rentEarned="5" icon={<HomeOutlined className='iconStyle' />} />
-                <InsightsCard heading="Portfolio Occupancy" rentEarned="100%" icon={<CalendarOutlined className='iconStyle' />} />
-                <InsightsCard heading="Annaulised Rental Yield" rentEarned="25,000" icon={<BarChartOutlined className='iconStyle' />} />
+                <InsightsCard heading="Number of Properties" amount="5" icon={<HomeOutlined className='iconStyle' />} />
+                <InsightsCard heading="Portfolio Occupancy" amount="100%" icon={<CalendarOutlined className='iconStyle' />} />
+                <InsightsCard heading="Annaulised Rental Yield" amount="25,000" icon={<BarChartOutlined className='iconStyle' />} />
             </div>
 
 

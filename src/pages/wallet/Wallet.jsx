@@ -1,5 +1,5 @@
 import React from 'react'
-import SidebarLayout from '../components/SidebarLayout'
+import SidebarLayout from '../../components/SidebarLayout'
 import WalletTab from './WalletTab'
 
 const Wallet = () => {

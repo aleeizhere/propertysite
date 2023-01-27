@@ -1,11 +1,8 @@
 import { useRef } from "react"
-import styles from "../style"
-import logo from '../assets/stake-logo.svg'
-import HeroImgComp from "../components/HeroImgComp"
-import email from '../assets/email.svg'
-import InputField from "../components/InputField"
-import CustomButton from "../components/CustomButton"
-import PasswordComp from "../components/PasswordComp"
+import styles from "../../style"
+import HeroImgComp from "../../components/HeroImgComp"
+import InputField from "../../components/InputField"
+import CustomButton from "../../components/CustomButton"
 import { useNavigate } from "react-router-dom"
 
 const listData = [

@@ -1,13 +1,14 @@
 import { Route, Routes } from "react-router-dom"
-import Wallet from "./pages/Wallet"
-import ConfirmEmail from "./pages/ConfirmEmail"
-import CreatePassword from "./pages/CreatePassword"
-import HomePage from "./pages/HomePage"
-import Login from "./pages/Login"
-import PhoneNumber from "./pages/PhoneNumber"
-import SignUp from "./pages/SignUp"
-import VerfiyPhone from "./pages/VerfiyPhone"
-import Portfolio from "./pages/Portfolio"
+import Wallet from "./pages/wallet/Wallet"
+import ConfirmEmail from "./pages/AuthPages/ConfirmEmail"
+import CreatePassword from "./pages/AuthPages/CreatePassword"
+import HomePage from "./pages/properties/HomePage"
+import PhoneNumber from "./pages/AuthPages/PhoneNumber"
+import SignUp from "./pages/AuthPages/SignUp"
+import VerfiyPhone from "./pages/AuthPages/VerfiyPhone"
+import Login from "./pages/AuthPages/Login"
+import Portfolio from "./pages/portfolio/Portfolio"
+import Cart from "./pages/cart/Cart"
 
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
         <Route path="/homePage" element={<HomePage/>}/>
         <Route path="/wallet" element={<Wallet/>}/>
         <Route path="/portfolio" element={<Portfolio/>}/>
+        <Route path="/cart" element={<Cart/>}/>
+
 
       </Routes>
     </>

@@ -1,7 +1,7 @@
-import styles from "../style"
-import logo from '../assets/stake-logo.svg'
-import HeroImgComp from "../components/HeroImgComp"
-import SignUpForm from "../components/SignUpForm"
+import styles from "../../style"
+import logo from '../../assets/stake-logo.svg'
+import HeroImgComp from "../../components/HeroImgComp"
+import SignUpForm from "../../components/SignUpForm"
 
 const SignUp = () => {
     return (

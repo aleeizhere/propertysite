@@ -1,12 +1,8 @@
 import { useRef } from "react"
-import styles from "../style"
-import logo from '../assets/stake-logo.svg'
-import HeroImgComp from "../components/HeroImgComp"
-import email from '../assets/email.svg'
-import InputField from "../components/InputField"
-import CustomButton from "../components/CustomButton"
-import PasswordComp from "../components/PasswordComp"
-import PhoneNumInput from "../components/PhoneNumInput"
+import styles from "../../style"
+import HeroImgComp from "../../components/HeroImgComp"
+import CustomButton from "../../components/CustomButton"
+import PhoneNumInput from "../../components/PhoneNumInput"
 import { useNavigate } from "react-router-dom"
 
 
