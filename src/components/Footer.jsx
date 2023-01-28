@@ -1,7 +1,17 @@
 import React from 'react';
 import styles from '../style';
 import logo from "../assets/stake-logo.svg"
+import { Link } from 'react-router-dom';
 const Footer = () => {
+
+    const links = [
+        {link:"First Link"},
+        {link:"Second Link"},
+        {link:"Third Link"},
+        {link:"Fourth Link"},
+
+    ]
+
     return (
         <footer className='bg-white'>
 
@@ -17,35 +27,25 @@ const Footer = () => {
                     <div className="lg:w-[30%] md:w-1/2 w-full px-4">
                         <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
                         <nav className="list-none mb-10">
-                            <li>
-                                <a className="text-gray-600 hover:text-gray-800">First Link</a>
-                            </li>
-                            <li>
-                                <a className="text-gray-600 hover:text-gray-800">Second Link</a>
-                            </li>
-                            <li>
-                                <a className="text-gray-600 hover:text-gray-800">Third Link</a>
-                            </li>
-                            <li>
-                                <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
-                            </li>
+                            {links.map((link) => (
+                                <li className='text-gray-600 hover:text-lightGreen'>
+                                    <Link>
+                                        <h1>{link.link}</h1>
+                                    </Link>
+                                </li>
+                            ))}
                         </nav>
                     </div>
                     <div className="lg:w-[30%] md:w-1/2 w-full px-4">
                         <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
                         <nav className="list-none mb-10">
-                            <li>
-                                <a className="text-gray-600 hover:text-gray-800">First Link</a>
-                            </li>
-                            <li>
-                                <a className="text-gray-600 hover:text-gray-800">Second Link</a>
-                            </li>
-                            <li>
-                                <a className="text-gray-600 hover:text-gray-800">Third Link</a>
-                            </li>
-                            <li>
-                                <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
-                            </li>
+                        {links.map((link) => (
+                                <li className='text-gray-600 hover:text-lightGreen'>
+                                    <Link>
+                                        <h1>{link.link}</h1>
+                                    </Link>
+                                </li>
+                            ))}
                         </nav>
                     </div>
                     <div className='lg:w-[30%] md:w-1/2 w-full px-4 grid place-items-center'>
@@ -77,7 +77,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="text-center">
-                    <p className="">© 2023 Stakes </p>            
+                    <p className="pb-10">© 2023 Stakes </p>            
             </div>
         </div>
         </footer>

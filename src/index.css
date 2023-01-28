@@ -10,4 +10,12 @@
     .iconStyleLg {
         @apply text-6xl text-lightGreen;
       }
+
+    .textHeading {
+      @apply text-3xl md:text-5xl font-bold text-lightGreen;
+    }
+
+    .textDesc{
+      @apply text-center p-2 md:text-2xl font-thin ;
+    }
   }

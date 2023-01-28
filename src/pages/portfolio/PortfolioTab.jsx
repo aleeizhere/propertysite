@@ -67,13 +67,11 @@ const PortfolioTab = () => {
                     <h1 className='font-normal md:text-lg'>Portfolio Value</h1>
                     <h1 className={`${styles.boldText} text-3xl`}>Taka 0</h1>
                 </div>
-                <div className=''>
-                    <div className='flex justify-center items-center flex-col mt-[10%]'>
-                        <h1 className='font-normal md:text-lg text-center'>Invest in properties <br /> to start building your wealth</h1>
-                        <Link to={"/homePage"}>
-                            <CustomButton text="Buy Properties" />
-                        </Link>
-                    </div>
+                <div className={`${styles.flexCenter} flex-col mt-[10%]`}>
+                    <h1 className='font-normal md:text-lg text-center'>Invest in properties <br /> to start building your wealth</h1>
+                    <Link to={"/homePage"}>
+                        <CustomButton text="Buy Properties" />
+                    </Link>
                 </div>
 
             </div>
