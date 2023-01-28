@@ -14,15 +14,15 @@ const { TabPane } = Tabs;
 //   icon: React.createElement(icon),
 //   label: `nav ${index + 1}`,
 // }));
-const SidebarLayout = ({component,selectedKey}) => {
+const SidebarLayout = ({ component, selectedKey }) => {
 
 
   const menus = [
     { name: "Properties", icon: WalletOutlined, linkTo: "/homePage" },
-    { name: "Wallet", icon: WalletOutlined, linkTo:"/wallet" },
-    { name: "Portfolio", icon: LineChartOutlined, linkTo:"/portfolio" },
+    { name: "Wallet", icon: WalletOutlined, linkTo: "/wallet" },
+    { name: "Portfolio", icon: LineChartOutlined, linkTo: "/portfolio" },
     { name: "Rewards", icon: StarOutlined },
-    { name: "My cart", icon: ShoppingCartOutlined, linkTo:"/cart" },
+    { name: "My cart", icon: ShoppingCartOutlined, linkTo: "/cart" },
 
   ];
 
@@ -47,11 +47,13 @@ const SidebarLayout = ({component,selectedKey}) => {
           defaultSelectedKeys={[selectedKey]}>
 
           <Menu.Item key={0} style={{ height: '50px', margin: '10px' }}>
-            <img src={logo} alt="" />
+            <Link to="/landingPage">
+              <img src={logo} alt="" />
+            </Link>
           </Menu.Item>
           <Divider />
           {menus.map((menu, i) => (
-            <Menu.Item key={i+1}>
+            <Menu.Item key={i + 1}>
               <Link to={menu?.linkTo} key={i} className="flex items-center text-lg gap-3.5 font-medium">
                 {React.createElement(menu?.icon)}
                 <h2 className="whitespace-pre">{menu?.name}</h2>
@@ -74,8 +76,8 @@ const SidebarLayout = ({component,selectedKey}) => {
           }}
         /> */}
 
-      
-        
+
+
         <Content
           style={{
             margin: '25px 10px 0',

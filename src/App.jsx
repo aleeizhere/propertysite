@@ -9,7 +9,7 @@ import VerfiyPhone from "./pages/AuthPages/VerfiyPhone"
 import Login from "./pages/AuthPages/Login"
 import Portfolio from "./pages/portfolio/Portfolio"
 import Cart from "./pages/cart/Cart"
-
+import LandingPage from "./pages/LandingPage/LandingPage"
 
 function App() {
   return (
@@ -26,8 +26,7 @@ function App() {
         <Route path="/wallet" element={<Wallet/>}/>
         <Route path="/portfolio" element={<Portfolio/>}/>
         <Route path="/cart" element={<Cart/>}/>
-
-
+        <Route path="/landingPage" element={<LandingPage />} />
       </Routes>
     </>
   )

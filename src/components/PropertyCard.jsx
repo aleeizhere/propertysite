@@ -2,11 +2,11 @@ import React from 'react'
 import property from '../assets/property.jpeg'
 import styles from '../style'
 
-const PropertyCard = ({ name, type, country, price, investors, annualReturn, fundedDate, CurrentValue }) => {
+const PropertyCard = ({ name, type, country, price, investors, annualReturn, fundedDate, CurrentValue, propertyImg }) => {
     return (
         <div class="sm:w-1/2 lg:w-[30%] mb-10 mx-2 bg-white rounded-xl">
             <div class="rounded-lg h-64 overflow-hidden">
-                <img alt="content" class="object-cover object-center h-full w-full" src={property} />
+                <img alt="content" class="object-cover object-center h-full w-full" src={propertyImg} />
             </div>
             <div className='flex gap-2 pl-4 pt-2'>
                 <h6 className='border rounded-sm p-1 text-xs'>{country}</h6>
