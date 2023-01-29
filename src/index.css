@@ -6,16 +6,13 @@
     .iconStyle {
       @apply text-4xl text-lightGreen;
     }
-
     .iconStyleLg {
         @apply text-6xl text-lightGreen;
       }
-
     .textHeading {
-      @apply text-3xl md:text-5xl font-bold text-lightGreen;
+      @apply text-3xl md:text-5xl font-bold text-[#4673B8];
     }
-
     .textDesc{
-      @apply text-center p-2 md:text-2xl font-thin ;
+      @apply text-center p-2 md:text-2xl font-thin text-[#10213C];
     }
   }

@@ -1,10 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import property from '../assets/property.jpeg'
 import styles from '../style'
 
 const PropertyCard = ({ name, type, country, price, investors, annualReturn, fundedDate, CurrentValue, propertyImg }) => {
     return (
         <div class="sm:w-1/2 lg:w-[30%] mb-10 mx-2 bg-white rounded-xl">
+            <Link to={"/5"}>
             <div class="rounded-lg h-64 overflow-hidden">
                 <img alt="content" class="object-cover object-center h-full w-full" src={propertyImg} />
             </div>
@@ -31,6 +33,8 @@ const PropertyCard = ({ name, type, country, price, investors, annualReturn, fun
                     <h1 className='font-bold'>{CurrentValue}</h1>
                 </div>
             </div>
+            </Link>
+
         </div>
     )
 }

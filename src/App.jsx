@@ -10,7 +10,7 @@ import Login from "./pages/AuthPages/Login"
 import Portfolio from "./pages/portfolio/Portfolio"
 import Cart from "./pages/cart/Cart"
 import LandingPage from "./pages/LandingPage/LandingPage"
-
+import PropertyDetails from "./pages/PropertyPage/PropertyDetails"
 function App() {
   return (
     <>
@@ -27,6 +27,8 @@ function App() {
         <Route path="/portfolio" element={<Portfolio/>}/>
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/landingPage" element={<LandingPage />} />
+        <Route path="/5" element={<PropertyDetails />} />
+
       </Routes>
     </>
   )
