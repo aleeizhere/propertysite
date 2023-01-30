@@ -3,10 +3,12 @@ import CustomButton from '../../components/CustomButton'
 import { ShoppingCartOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
 import styles from '../../style'
+import { Divider } from 'antd'
 const CartTab = () => {
     return (
         <div className='h-screen lg:h-[39rem]'>
             <h1 className={`${styles.boldText} text-lightGreen text-center text-3xl`}>My Cart</h1>
+            <Divider className='border-black border' />
 
             <div className='bg-white p-7 mt-12 md:min-h-[30rem] '>
 

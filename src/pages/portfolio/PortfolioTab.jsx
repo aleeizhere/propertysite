@@ -5,7 +5,7 @@ import styles from '../../style';
 import BalanceCard from '../../components/BalanceCard'
 import { RiseOutlined, HomeOutlined, CalendarOutlined, BarChartOutlined } from '@ant-design/icons';
 import InsightsCard from '../../components/InsightsCard';
-import { Table } from 'antd';
+import { Divider, Table } from 'antd';
 
 const data = [
     {
@@ -58,8 +58,10 @@ const columns = [
 
 const PortfolioTab = () => {
     return (
-        <>
+        <div className=''>
             <h1 className={`${styles.boldText} text-lightGreen text-center text-3xl`}>Portfolio</h1>
+            <Divider className='border-black border' />
+
 
             {/* portfolio component */}
             <div className='bg-white p-7 mt-12 md:min-h-[30rem]'>
@@ -79,6 +81,7 @@ const PortfolioTab = () => {
             {/* KEY Financials divs */}
 
             <h1 className={`${styles.boldText} text-lightGreen text-center text-3xl mt-12`}>Key financials</h1>
+            <Divider className='border-black border' />
 
             <div className='flex flex-col gap-y-3 md:flex-row justify-between mt-12'>
                 <BalanceCard heading="Monthly income (Jan 2023)" amount="Taka 15000" icon={<RiseOutlined className='iconStyleLg' />} />
@@ -89,6 +92,7 @@ const PortfolioTab = () => {
             {/* Quick Insights */}
 
             <h1 className={`${styles.boldText} text-lightGreen text-center text-3xl mt-12`}>Quick insights</h1>
+            <Divider className='border-black border' />
 
             <div className='flex flex-col gap-y-3 md:flex-row justify-between mt-12'>
                 <InsightsCard heading="Number of Properties" amount="5" icon={<HomeOutlined className='iconStyle' />} />
@@ -100,17 +104,19 @@ const PortfolioTab = () => {
             {/* Investments table  */}
 
             <h1 className={`${styles.boldText} mt-12 text-lightGreen text-center text-3xl`}>Active Investments</h1>
+            <Divider className='border-black border' />
 
             <div className='mt-12'>
                 <Table columns={columns} dataSource={data} />
             </div>
 
             <h1 className={`${styles.boldText} text-lightGreen text-center text-3xl`}>Live Investments</h1>
+            <Divider className='border-black border' />
 
             <div className='mt-12'>
                 <Table columns={columns} dataSource={data} />
             </div>
-        </>
+        </div>
     )
 }
 

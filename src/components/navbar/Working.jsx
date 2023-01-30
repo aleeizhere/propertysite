@@ -19,7 +19,7 @@ const Working = () => {
             <div className={`${styles.boxWidth} m-auto flex flex-wrap md:flex-nowrap justify-evenly p-5 md:p-10 mb-10 bg-white`}>
                 {
                     working.map((work, i) => (
-                        <div key={i} className="font-medium text-xl">
+                        <div key={i} className="font-medium text-xl cursor-pointer">
                             <h1 className='text-3xl pb-2 font-bold bg-creamWhite p-2 rounded-lg w-fit'>{work.number}</h1>
                             <h1 className='text-lg md:text-xl pt-2 pb-2 font-bold'>{work.heading}</h1>
                             <h1 className='text-xs  lg:text-sm'>{work.desc}</h1>
