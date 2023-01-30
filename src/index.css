@@ -15,4 +15,12 @@
     .textDesc{
       @apply text-center p-2 md:text-2xl font-thin text-[#10213C];
     }
+    .ant-steps-item-title {
+      @apply text-xl font-bold text-red-600;
+    }
+    
+    .ant-steps-item-description {
+      @apply text-base text-green-700;
+    }
+    
   }
