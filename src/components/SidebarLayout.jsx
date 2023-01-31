@@ -1,12 +1,10 @@
-import React from 'react'
+import React,{useState} from 'react'
 import logo from '../assets/stake-logo.svg'
-import styles from '../style';
 import { WalletOutlined, LineChartOutlined, StarOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
 import { Layout, Menu, Divider, Avatar, Tabs } from 'antd';
-import PropertiesTabs from '../pages/properties/PropertiesTabs';
 import { Link } from 'react-router-dom';
 const { Content, Sider } = Layout;
-const { TabPane } = Tabs;
+import "./Sidebar.css"
 // const items = [
 //   UploadOutlined, UserOutlined, VideoCameraOutlined
 // ].map((icon, index) => ({
@@ -15,7 +13,10 @@ const { TabPane } = Tabs;
 //   label: `nav ${index + 1}`,
 // }));
 const SidebarLayout = ({ component, selectedKey }) => {
-
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
 
   const menus = [
     { name: "Properties", icon: WalletOutlined, linkTo: "/homePage" },
@@ -34,13 +35,12 @@ const SidebarLayout = ({ component, selectedKey }) => {
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
-          console.log(broken);
+          console.log("broken", broken);
         }}
-        onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
-        }}
+        onCollapse={toggleSidebar}
+        collapsed={!sidebarOpen}
+        className={`${sidebarOpen ? " ant-layout-sider-open" : ""}`}
       >
-        <div className="logo" />
         <Menu theme="light"
           className=''
           mode="inline"
@@ -82,15 +82,16 @@ const SidebarLayout = ({ component, selectedKey }) => {
           style={{
             margin: '25px 10px 0',
           }}
+          className={sidebarOpen ? "translate-x-[90px] md:translate-x-0 overflow-hidden" : ""}
         >
           <div
             style={{
               // padding: 23,
               minHeight: 360,
             }}
-            className="p-2 md:p-6 lg:p-8 "
+            className={`p-2 md:p-6 lg:p-8 `}
           >
-            <div>
+            <div >
               {/* <PropertiesTabs /> */}
               {component}
             </div>
