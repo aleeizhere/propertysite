@@ -28,7 +28,7 @@ const SidebarLayout = ({ component, selectedKey }) => {
   ];
 
   return (
-    <Layout className='' >
+    <Layout >
       <Sider
         theme='light'
         width={"270px"}
@@ -42,9 +42,9 @@ const SidebarLayout = ({ component, selectedKey }) => {
         className={`${sidebarOpen ? " ant-layout-sider-open" : ""}`}
       >
         <Menu theme="light"
-          className=''
           mode="inline"
-          defaultSelectedKeys={[selectedKey]}>
+          defaultSelectedKeys={[selectedKey]}
+          style={{fontFamily:"Poppins"}}>
 
           <Menu.Item key={0} style={{ height: '50px', margin: '10px' }}>
             <Link to="/landingPage">
@@ -81,6 +81,7 @@ const SidebarLayout = ({ component, selectedKey }) => {
         <Content
           style={{
             margin: '25px 10px 0',
+            fontFamily:"Poppins"
           }}
           className={sidebarOpen ? "translate-x-[90px] md:translate-x-0 overflow-hidden" : ""}
         >

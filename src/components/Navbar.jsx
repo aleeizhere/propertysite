@@ -34,13 +34,13 @@ const Navbar = () => {
 
     return (
         <nav className="w-full flex py-6 justify-between items-center">
-            <img src={logo} alt="logo" className="w-[124px] h-[32px]" />
+            <img src={logo} alt="logo" className="w-[124px] h-[32px] cursor-pointer" />
 
             <ul className="list-none sm:flex hidden justify-end items-center flex-1">
                 {navLinks.map((nav, index) => (
                     <li
                         key={nav.id}
-                        className={`font-poppins font-normal cursor-pointer text-lg hover:-translate-y-1 transition-all duration-300 ${active === nav.title ? "text-lightGreen" : "text-black"
+                        className={`font-normal cursor-pointer text-lg hover:-translate-y-1 transition-all duration-300 hover:underline ${active === nav.title ? "text-lightGreen" : "text-black"
                             } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
                         onClick={() => setActive(nav.title)}
                     >

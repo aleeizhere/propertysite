@@ -12,7 +12,7 @@ const PropertiesTabs = () => {
     };
     return (
         <div className=''>
-            <h1 className={`${styles.boldText} text-lightGreen text-center text-3xl`}>Properties</h1>
+            <h1 className={`${styles.boldText} text-lightGreen text-center text-3xl `}>Properties</h1>
 
             <Tabs activeKey={activeTab}
                 centered
@@ -20,6 +20,7 @@ const PropertiesTabs = () => {
                 defaultChecked="1"
                 tabBarGutter={90}
                 tabBarStyle={{ marginTop: "40px"}}
+                style={{fontFamily:"Poppins"}}
 
             >
                 <TabPane
