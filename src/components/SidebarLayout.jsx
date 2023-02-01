@@ -1,10 +1,14 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import logo from '../assets/stake-logo.svg'
-import { WalletOutlined, LineChartOutlined, StarOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
-import { Layout, Menu, Divider, Avatar, Tabs } from 'antd';
+import { WalletOutlined, LineChartOutlined, StarOutlined, ShoppingCartOutlined, UserOutlined, LogoutOutlined } from '@ant-design/icons';
+import { Layout, Menu, Divider, Avatar, Popover, Button } from 'antd';
 import { Link } from 'react-router-dom';
 const { Content, Sider } = Layout;
 import "./Sidebar.css"
+import styles from '../style';
+
+
+
 // const items = [
 //   UploadOutlined, UserOutlined, VideoCameraOutlined
 // ].map((icon, index) => ({
@@ -12,6 +16,21 @@ import "./Sidebar.css"
 //   icon: React.createElement(icon),
 //   label: `nav ${index + 1}`,
 // }));
+
+const title = (
+  <Link to="/profilePage" className="flex items-center gap-x-2" style={{fontFamily:"Poppins"}}>
+    <UserOutlined className='text-xl' />
+    <h1 className='text-base font-normal'>My Profile</h1>
+  </Link>
+);
+
+const content = (
+  <Link to="/" className="flex items-center gap-x-2" style={{fontFamily:"Poppins"}}>
+    <LogoutOutlined className='text-red-900 text-xl' />
+    <h1 className='text-base font-normal'>Logout</h1>
+  </Link>
+);
+
 const SidebarLayout = ({ component, selectedKey }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const toggleSidebar = () => {
@@ -44,7 +63,7 @@ const SidebarLayout = ({ component, selectedKey }) => {
         <Menu theme="light"
           mode="inline"
           defaultSelectedKeys={[selectedKey]}
-          style={{fontFamily:"Poppins"}}>
+          style={{ fontFamily: "Poppins" }}>
 
           <Menu.Item key={0} style={{ height: '50px', margin: '10px' }}>
             <Link to="/landingPage">
@@ -61,11 +80,17 @@ const SidebarLayout = ({ component, selectedKey }) => {
             </Menu.Item>
           ))}
           <Divider />
-          <Menu.Item style={{ height: '' }}>
-            <div className='flex items-center gap-2'>
-              <Avatar icon={<UserOutlined />} />
+
+          <Menu.Item key={6} style={{ height: '' }} >
+            {/* <div className='flex items-center gap-2'>
+              <Avatar icon={<UserOutlined />} className={`${styles.flexCenter}`} />
               <h1 className='text-lg font-medium'>Mark</h1>
-            </div>
+            </div> */}
+            <Popover className='flex items-center gap-2' placement="right" title={title} content={content} trigger="click">
+              <Avatar icon={<UserOutlined />} className={`${styles.flexCenter}`} />
+              <h1 className='text-lg font-medium'>Mark</h1>
+            </Popover>
+
           </Menu.Item>
         </Menu>
       </Sider>
@@ -81,7 +106,7 @@ const SidebarLayout = ({ component, selectedKey }) => {
         <Content
           style={{
             margin: '25px 10px 0',
-            fontFamily:"Poppins"
+            fontFamily: "Poppins"
           }}
           className={sidebarOpen ? "translate-x-[90px] md:translate-x-0 overflow-hidden" : ""}
         >

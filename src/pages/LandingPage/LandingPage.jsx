@@ -32,7 +32,7 @@ const LandingPage = () => {
         <div className='w-full overflow-hidden bg-creamWhite'>
 
             {/* Navbar */}
-            <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+            <div className={`${styles.paddingX} ${styles.flexCenter} bg-white`}>
                 <div className={`${styles.boxWidth}`}>
                     <Navbar />
                 </div>

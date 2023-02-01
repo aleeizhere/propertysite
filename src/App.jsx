@@ -11,6 +11,7 @@ import Portfolio from "./pages/portfolio/Portfolio"
 import Cart from "./pages/cart/Cart"
 import LandingPage from "./pages/LandingPage/LandingPage"
 import PropertyDetails from "./pages/PropertyPage/PropertyDetails"
+import ProfilePage from "./pages/Profile/Profile"
 function App() {
   return (
     <>
@@ -28,6 +29,7 @@ function App() {
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/landingPage" element={<LandingPage />} />
         <Route path="/5" element={<PropertyDetails />} />
+        <Route path="profilePage" element={<ProfilePage />}/>
 
       </Routes>
     </>
