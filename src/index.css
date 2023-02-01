@@ -44,3 +44,15 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+.bg-blue-gradient {
+  background: linear-gradient(
+    147.81deg,
+    #2a2c31 -43.27%,
+    #ffffff -21.24%,
+    #8eb4ed 12.19%,
+    #d0e0f8 29.82%,
+    #92b7ee 51.94%,
+    #889cb9 90.29%
+  );
+}

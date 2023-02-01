@@ -57,21 +57,20 @@ const WalletTab = () => {
     return (
         <>
             <h1 className={`${styles.boldText} text-lightGreen text-center text-3xl`}>Wallet</h1>
-            <Divider className='border-black border' />
+            <Divider className='border-lightGray' />
             <div className="flex flex-col gap-y-3 md:flex-row justify-between mt-12">
                 <BalanceCard heading="Cash balance" amount="Taka 0" btns={true} />
                 <BalanceCard heading="Rewards Balance" amount="Taka 0" icon={<StarOutlined className='iconStyleLg' />} />
             </div>
 
             <h1 className={`${styles.boldText} mt-12 text-lightGreen text-center text-3xl`}>Transactions</h1>
-            <Divider className='border-black border' />
-
+            <Divider className='border-lightGray' />
                 <div className='mt-12'>
                     <Table columns={columns} dataSource={data} />;
                 </div>
 
             <h1 className={`${styles.boldText}  text-lightGreen text-center text-3xl`}>Banks</h1>
-            <Divider className='border-black border' />
+            <Divider className='border-lightGray' />
 
             <div className='bg-white md:w-[48%] mt-12 rounded-lg'>
                 <div className='flex items-center gap-x-5 pl-5 pt-5'>
