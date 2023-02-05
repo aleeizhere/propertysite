@@ -11,8 +11,8 @@ const FundedProperties = () => {
                     <h1 className='textDesc'>With our extensive experience leading top real estate companies in Bangladesh, we use our knowledge and connections to identify properties with exceptional investment potential for our clients.</h1>
                 </div>
 
-                <div className="md:flex md:justify-center lg:justify-start items-center gap-x-5 flex-wrap mt-12">
-                    <PropertyCard name="Studio in Dubai" country="Dubai"
+                <div data-aos="fade-up" className="md:flex md:justify-center lg:justify-start items-center gap-x-5 flex-wrap mt-12">
+                    <PropertyCard  name="Studio in Dubai" country="Dubai"
                         type="Holiday" price="TAKA 736,393" investors="116 investors"
                         annualReturn="11.10%" fundedDate="12 Jan 2023" CurrentValue="TAKA 760,000" propertyImg={property} />
                     <PropertyCard name="1 Bed room in Burj Khalifa" country="Dubai" type="Holiday"

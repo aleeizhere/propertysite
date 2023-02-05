@@ -47,7 +47,7 @@ const LandingPage = () => {
             </div>
 
             {/* website figures component */}
-            <div className="flex justify-evenly flex-wrap gap-y-9 m-auto p-5 md:p-10 w-[90%] lg:w-[75%] mb-10 mt-14 md:mt-36 shadow-xl rounded-lg bg-white">
+            <div  data-aos="fade-up" className="flex justify-evenly flex-wrap gap-y-9 m-auto p-5 md:p-10 w-[90%] lg:w-[75%] mb-10 mt-14 md:mt-36 shadow-xl rounded-lg bg-white">
                 {
                     data?.map((d, i) => (
                         <div key={i} className="text-center font-medium text-xl cursor-pointer">

@@ -21,7 +21,7 @@ const Investment = () => {
         <div className={`${styles.boxWidth} m-auto flex flex-wrap justify-evenly p-5 md:p-10 mb-10 gap-x-6`}>
             {
                 investing.map((invest, i) => (
-                    <div key={i} className="shadow-lg p-5 md:w-64 rounded-lg cursor-pointer">
+                    <div data-aos="zoom-in" key={i} className="shadow-lg p-5 md:w-64 rounded-lg cursor-pointer">
                         <img src={invest.icon} alt="icon" className='w-14' />
                         <h1 className='text-xl pt-2 pb-2 font-bold'>{invest.heading}</h1>
                         <h1 className='text-xs lg:text-sm text-gray-600 pt-3'>{invest.desc}</h1>

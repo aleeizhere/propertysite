@@ -27,7 +27,7 @@ const Strategy = () => {
                 </div>
 
                 {/* img card */}
-                <div className="flex flex-col bg-white cursor-pointer rounded-lg hover:shadow-xl shadow-md hover:-translate-y-2 transition-all duration-300">
+                <div data-aos="zoom-in-up" className="flex flex-col bg-white cursor-pointer rounded-lg hover:shadow-xl shadow-md hover:-translate-y-2 transition-all duration-300">
                     <div class="h-64 overflow-hidden rounded-t-lg">
                         <img alt="content" class="object-cover object-center h-full w-full" src={property} />
                     </div>

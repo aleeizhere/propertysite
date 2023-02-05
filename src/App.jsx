@@ -28,7 +28,7 @@ function App() {
         <Route path="/portfolio" element={<Portfolio/>}/>
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/landingPage" element={<LandingPage />} />
-        <Route path="/5" element={<PropertyDetails />} />
+        <Route path="/property/:propertyNumber" element={<PropertyDetails />} />
         <Route path="profilePage" element={<ProfilePage />}/>
 
       </Routes>

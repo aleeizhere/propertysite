@@ -12,7 +12,7 @@ const HeroImg = () => {
         // </div>
 
         <section className="md:pt-10 lg:pl-0 pl-4  flex flex-col lg:flex-row mt-14">
-            <div className="lg:w-1/2 p-5 md:p-2">
+            <div data-aos="fade-right"  data-aos-duration="1000" className="lg:w-1/2 p-5 md:p-2">
                 <div className='md:w-[90%] lg:w-[80%] md:pl-14 lg:pl-0 lg:mt-12'>
                     <h1 className="text-2xl  md:text-5xl font-extrabold text-gradient">The modern way for anyone to invest in real estate </h1>
                     <p className="text-lg font-light pt-5">Digitally invest in prime rental properties, no matter where you are in the world!</p>
@@ -22,7 +22,7 @@ const HeroImg = () => {
 
                 </div>
             </div>
-            <div className="lg:w-1/2 relative mt-8">
+            <div data-aos="fade-left" data-aos-duration="1000" className="lg:w-1/2 relative mt-8">
                 <div className='md:w-[90%] lg:w-[80%] p-5 md:p-0 md:pl-14'>
                     <img
                         className="rounded-lg shadow-lg lg:m-8"

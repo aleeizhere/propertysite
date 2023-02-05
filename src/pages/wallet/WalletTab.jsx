@@ -79,7 +79,7 @@ const WalletTab = () => {
                 </div>
 
                 <div className='p-5 '>
-                    <CustomButton text="Add new bank" />
+                    <CustomButton type="button" text="Add new bank" />
                 </div>
 
             </div>
