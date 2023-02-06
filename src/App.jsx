@@ -12,10 +12,14 @@ import Cart from "./pages/cart/Cart"
 import LandingPage from "./pages/LandingPage/LandingPage"
 import PropertyDetails from "./pages/PropertyPage/PropertyDetails"
 import ProfilePage from "./pages/Profile/Profile"
+import Properties from "./pages/adminPanel/AdminProperties/Properties"
+import AddProperty from "./pages/adminPanel/AdminProperties/AddProperty"
 function App() {
   return (
     <>
       {/* <VerfiyPhone /> */}
+      
+
       <Routes>
         <Route path="/" element={<Login />}/>
         <Route path="/signup" element={<SignUp />}/>
@@ -31,7 +35,14 @@ function App() {
         <Route path="/property/:propertyNumber" element={<PropertyDetails />} />
         <Route path="profilePage" element={<ProfilePage />}/>
 
+        {/* Admin Panel pages */}
+        <Route path="/adminPanel" element={<Properties />}/>
+        <Route path="/adminPanel/addProperty" element={<AddProperty /> }/>
+
       </Routes>
+
+    
+    
     </>
   )
 }
