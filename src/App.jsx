@@ -17,6 +17,8 @@ import AddProperty from "./pages/adminPanel/AdminProperties/AddProperty"
 import PurchaseRequests from "./pages/adminPanel/PurchaseRequests/PurchaseRequests"
 import UsersList from "./pages/adminPanel/users/UsersList"
 import RentDetails from "./pages/adminPanel/rentDetails/RentDetails"
+import BankDetails from "./pages/adminPanel/BankDetails/BankDetails"
+import AddBank from "./pages/adminPanel/BankDetails/AddBank"
 function App() {
   return (
     <>
@@ -44,6 +46,10 @@ function App() {
         <Route path="/purchaseRequests" element={<PurchaseRequests />} />
         <Route path="/usersList" element={<UsersList />} />
         <Route path="/rentDetails" element={<RentDetails />} />
+        <Route path="/bankDetails" element={<BankDetails />} />
+        <Route path="/addBank" element={<AddBank />} />
+
+
 
 
 

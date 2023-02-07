@@ -33,7 +33,7 @@ const SideBar = ({ component, selectedKey }) => {
         { name: "Purchase Requests", icon: MoneyCollectOutlined, linkTo: "/purchaseRequests" },
         { name: "Users List", icon: UserOutlined, linkTo: "/usersList" },
         { name: "Rent", icon: MoneyCollectOutlined, linkTo:"/rentDetails"},
-        { name: "Bank Info", icon: BankOutlined, linkTo: "/cart" },
+        { name: "Bank Info", icon: BankOutlined, linkTo: "/bankDetails" },
     ];
 
     return (

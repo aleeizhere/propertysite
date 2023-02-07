@@ -160,7 +160,7 @@ const UsersListTab = () => {
 
     return (
         <div>
-            <h1 className={`${styles.boldText} text-center md:text-left text-lightGreen text-3xl`}>All Users</h1>
+            <h1 className={`${styles.boldText} text-center md:text-left text-lightGreen text-3xl md:pl-10 lg:pl-0`}>All Users</h1>
             <h1 className='text-sm text-gray-500 mt-3 text-center md:text-left mb-8'>View All Users details on your platform </h1>
             {/* <Link to="/adminPanel/addProperty" className='inline-block mb-8 '>
                 <CustomButton text="Add new Property" />

@@ -1,21 +1,29 @@
 import React from 'react'
-import { Form, Input } from 'antd';
-import SidebarLayout from '../../components/SidebarLayout';
-import CustomButton from '../../components/CustomButton';
-import styles from '../../style';
-const ProfilePageTab = () => {
-
-    const onFinish = (values) => {
-        console.log('Success:', values);
-    };
-    const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-    };
+import SideBar from '../../../components/AdminPanelComp/SideBar'
+import { Button, Checkbox, Form, Input, InputNumber } from 'antd';
+import CustomButton from '../../../components/CustomButton';
+import styles from '../../../style';
+const AddBank = () => {
     return (
-        <div className='md:w-1/2 m-auto h-screen'>
-            <h1 className={`${styles.boldText} text-center md:text-left text-lightGreen text-3xl mb-8`}>User Details</h1>
+        <>
+            <SideBar component={<AddBankForm />} selectedKey="5" />
+        </>
+    )
+}
 
-            <h1 className={`${styles.boldText} mb-2`}>User Name</h1>
+const onFinish = (values) => {
+    console.log('Success:', values);
+};
+const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
+};
+
+const AddBankForm = () => {
+    return (
+        <div className='md:w-1/2 m-auto'>
+            <h1 className={`${styles.boldText} text-center md:text-left text-lightGreen text-3xl mb-8`}>Add Bank Details</h1>
+
+            <h1 className={`${styles.boldText} mb-2`}>Enter Bank Name</h1>
 
             <Form
                 onFinish={onFinish}
@@ -35,7 +43,7 @@ const ProfilePageTab = () => {
                 </Form.Item>
 
 
-                <h1 className={`${styles.boldText} mb-2`}>Email Address</h1>
+                <h1 className={`${styles.boldText} mb-2`}>Enter Account Number</h1>
 
 
                 <Form.Item
@@ -51,7 +59,7 @@ const ProfilePageTab = () => {
                 </Form.Item>
 
 
-                <h1 className={`${styles.boldText} mb-2`}>Password</h1>
+                <h1 className={`${styles.boldText} mb-2`}>Enter IBAN Number</h1>
 
                 <Form.Item
                     name="propertyStatus"
@@ -62,11 +70,11 @@ const ProfilePageTab = () => {
                         },
                     ]}
                 >
-                    <Input.Password />
+                    <Input />
                 </Form.Item>
 
                 <Form.Item>
-                    <CustomButton type="button" text="Update Profile" />
+                    <CustomButton type="button" text="Add Bank" />
                 </Form.Item>
             </Form>
         </div>
@@ -74,6 +82,4 @@ const ProfilePageTab = () => {
 }
 
 
-
-
-export default ProfilePageTab
+export default AddBank

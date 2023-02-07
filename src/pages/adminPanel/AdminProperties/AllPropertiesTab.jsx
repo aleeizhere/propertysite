@@ -135,7 +135,7 @@ const data = [
 const AllPropertiesTab = () => {
     return (
         <div>
-            <h1 className={`${styles.boldText} text-center md:text-left text-lightGreen text-3xl`}>Properties</h1>
+            <h1 className={`${styles.boldText} text-center md:text-left text-lightGreen text-3xl md:pl-10 lg:pl-0`}>Properties</h1>
             <h1 className='text-sm text-gray-500 mt-3 text-center md:text-left'>View, Edit and Update All properties details</h1>
             <Link to="/adminPanel/addProperty" className='inline-block mb-8 '>
                 <CustomButton text="Add new Property" />
