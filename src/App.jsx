@@ -15,6 +15,7 @@ import ProfilePage from "./pages/Profile/Profile"
 import Properties from "./pages/adminPanel/AdminProperties/Properties"
 import AddProperty from "./pages/adminPanel/AdminProperties/AddProperty"
 import PurchaseRequests from "./pages/adminPanel/PurchaseRequests/PurchaseRequests"
+import UsersList from "./pages/adminPanel/users/UsersList"
 function App() {
   return (
     <>
@@ -40,6 +41,8 @@ function App() {
         <Route path="/adminPanel" element={<Properties />}/>
         <Route path="/adminPanel/addProperty" element={<AddProperty /> }/>
         <Route path="/purchaseRequests" element={<PurchaseRequests />} />
+        <Route path="/usersList" element={<UsersList />} />
+
 
       </Routes>
 

@@ -31,7 +31,7 @@ const SideBar = ({ component, selectedKey }) => {
     const menus = [
         { name: "Properties", icon: WalletOutlined, linkTo: "/adminPanel" },
         { name: "Purchase Requests", icon: MoneyCollectOutlined, linkTo: "/purchaseRequests" },
-        { name: "Users List", icon: UserOutlined, linkTo: "/portfolio" },
+        { name: "Users List", icon: UserOutlined, linkTo: "/usersList" },
         { name: "Rent", icon: MoneyCollectOutlined },
         { name: "Bank Info", icon: BankOutlined, linkTo: "/cart" },
     ];

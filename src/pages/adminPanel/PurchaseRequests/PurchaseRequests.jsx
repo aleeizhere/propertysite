@@ -4,7 +4,9 @@ import PurchaseRequestsTab from './PurchaseRequestsTab'
 
 const PurchaseRequests = () => {
   return (
-    <SideBar component={<PurchaseRequestsTab />} selectedKey="2" />
+    <>
+      <SideBar component={<PurchaseRequestsTab />} selectedKey="2" />
+    </>
   )
 }
 
