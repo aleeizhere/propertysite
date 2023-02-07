@@ -3,32 +3,48 @@ import styles from '../../../style';
 import { Space, Table, Tag } from 'antd';
 import CustomButton from "../../../components/CustomButton"
 import { Link } from 'react-router-dom';
+import '../../../components/Sidebar.css'
 const columns = [
-    // {
-    //     title: 'Name',
-    //     dataIndex: 'name',
-    //     key: 'name',
-    //     render: (text) => <a>{text}</a>,
-    // },
     {
         title: 'Address',
         dataIndex: 'address',
         key: 'address',
+
     },
     {
         title: 'Investors',
         dataIndex: 'investors',
         key: 'investors',
+        responsive: ['md'],
+
     },
     {
         title: 'Price',
         dataIndex: 'price',
         key: 'price',
+        responsive: ['md'],
+
     },
     {
         title: 'Status',
         dataIndex: 'status',
         key: 'status',
+        responsive: ['md'],
+        filters: [
+            {
+                text: 'Available',
+                value: 'Available',
+            },
+            {
+                text: 'Funded',
+                value: 'Funded',
+            },
+        ],
+        onFilter: (value, record) => record.status.indexOf(value) === 0,
+        render: (text) => {
+            return <span className={`${text === "Available" ? 'bg-green-300' : 'bg-red-300'} p-1 rounded-md`}>{text}</span>;
+        },
+
     },
     {
         title: 'Tags',
@@ -46,6 +62,7 @@ const columns = [
                 })}
             </>
         ),
+        responsive: ['md'],
     },
     {
         title: 'Action',
@@ -61,7 +78,6 @@ const columns = [
 const data = [
     {
         key: '1',
-        name: 'John Brown',
         price: 425175,
         address: 'Studio in Studio One - Dubai Marina',
         tags: ['Dubai', 'Holiday'],
@@ -70,7 +86,6 @@ const data = [
     },
     {
         key: '2',
-        name: 'Jim Green',
         price: 451545,
         address: '1 Bed in The Address Downtown',
         tags: ['Bangladesh', 'Home'],
@@ -80,7 +95,6 @@ const data = [
     },
     {
         key: '3',
-        name: 'Joe Black',
         price: 327484,
         address: '1 Bed in Marquise Square - Business Bay',
         tags: ['Australia', 'Holiday'],
@@ -90,7 +104,6 @@ const data = [
     },
     {
         key: '4',
-        name: 'Joe Black',
         price: 34552,
         address: 'Studio in Sky Gardens - DIFC',
         tags: ['Dubai', 'Rented'],
@@ -100,7 +113,6 @@ const data = [
     },
     {
         key: '5',
-        name: 'Joe Black',
         price: 32452,
         address: 'Studio in Studio One - Dubai Marina',
         tags: ['London', 'Holiday'],
@@ -110,7 +122,6 @@ const data = [
     },
     {
         key: '6',
-        name: 'Joe Black',
         price: 31552,
         address: '3 Bed in Boulevard Point Downtown Dubai',
         tags: ['Dubai', 'Holiday'],

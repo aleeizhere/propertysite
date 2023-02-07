@@ -14,6 +14,7 @@ import PropertyDetails from "./pages/PropertyPage/PropertyDetails"
 import ProfilePage from "./pages/Profile/Profile"
 import Properties from "./pages/adminPanel/AdminProperties/Properties"
 import AddProperty from "./pages/adminPanel/AdminProperties/AddProperty"
+import PurchaseRequests from "./pages/adminPanel/PurchaseRequests/PurchaseRequests"
 function App() {
   return (
     <>
@@ -38,6 +39,7 @@ function App() {
         {/* Admin Panel pages */}
         <Route path="/adminPanel" element={<Properties />}/>
         <Route path="/adminPanel/addProperty" element={<AddProperty /> }/>
+        <Route path="/purchaseRequests" element={<PurchaseRequests />} />
 
       </Routes>
 

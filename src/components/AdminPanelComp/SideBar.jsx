@@ -30,7 +30,7 @@ const SideBar = ({ component, selectedKey }) => {
 
     const menus = [
         { name: "Properties", icon: WalletOutlined, linkTo: "/adminPanel" },
-        { name: "Purchase Requests", icon: MoneyCollectOutlined, linkTo: "/wallet" },
+        { name: "Purchase Requests", icon: MoneyCollectOutlined, linkTo: "/purchaseRequests" },
         { name: "Users List", icon: UserOutlined, linkTo: "/portfolio" },
         { name: "Rent", icon: MoneyCollectOutlined },
         { name: "Bank Info", icon: BankOutlined, linkTo: "/cart" },
@@ -59,7 +59,7 @@ const SideBar = ({ component, selectedKey }) => {
                 <Menu theme="light"
                     mode="inline"
                     defaultSelectedKeys={[selectedKey]}
-                    style={{ fontFamily: "Poppins", height:"100vh" }}
+                    style={{ fontFamily: "Poppins", height: '100vh' }}
                     onClick={handleMenuClick}
                     
                     >
