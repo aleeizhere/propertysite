@@ -9,7 +9,6 @@ const columns = [
         title: 'Address',
         dataIndex: 'address',
         key: 'address',
-
     },
     {
         title: 'Investors',
