@@ -59,8 +59,8 @@ const WalletTab = () => {
             <h1 className={`${styles.boldText} text-lightGreen text-center text-3xl`}>Wallet</h1>
             <Divider className='border-lightGray' />
             <div className="flex flex-col gap-y-3 md:flex-row justify-between mt-12">
-                <BalanceCard heading="Cash balance" amount="Taka 0" btns={true} />
-                <BalanceCard heading="Rewards Balance" amount="Taka 0" icon={<StarOutlined className='iconStyleLg' />} />
+                <BalanceCard heading="Cash balance" amount="$ 0" btns={true} />
+                <BalanceCard heading="Rewards Balance" amount="$ 0" icon={<StarOutlined className='iconStyleLg' />} />
             </div>
 
             <h1 className={`${styles.boldText} mt-12 text-lightGreen text-center text-3xl`}>Transactions</h1>

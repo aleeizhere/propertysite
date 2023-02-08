@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import close from "../assets/close2.svg";
 import menu from "../assets/menu2.svg";
-import logo from "../assets/stake-logo.svg";
+// import logo from "../assets/stake-logo.svg";
 
 
 
@@ -34,7 +34,7 @@ const Navbar = () => {
 
     return (
         <nav className="w-full flex py-6 justify-between items-center">
-            <img src={logo} alt="logo" className="w-[124px] h-[32px] cursor-pointer" />
+            <img src="src/assets/upstake-logo.webp" alt="logo" className="w-[124px] cursor-pointer" />
 
             <ul className="list-none sm:flex hidden justify-end items-center flex-1">
                 {navLinks.map((nav, index) => (

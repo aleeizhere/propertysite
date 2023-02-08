@@ -23,13 +23,13 @@ const AddPropertyForm = () => {
     <div className='md:w-1/2 m-auto'>
       <h1 className={`${styles.boldText} text-center md:text-left text-lightGreen text-3xl mb-8`}>Add new Property</h1>
 
-      <h1 className={`${styles.boldText} mb-2`}>Enter propperty Address</h1>
 
       <Form
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
+      <h1 className={`${styles.boldText} mb-2`}>Enter property Address</h1>
         <Form.Item
           name="propertyAddress"
           rules={[
@@ -39,11 +39,11 @@ const AddPropertyForm = () => {
             },
           ]}
         >
-          <Input />
+          <Input className='py-3' />
         </Form.Item>
 
 
-        <h1 className={`${styles.boldText} mb-2`}>Enter propperty Price</h1>
+        <h1 className={`${styles.boldText} mb-2`}>Enter property Price</h1>
 
       
           <Form.Item
@@ -55,11 +55,11 @@ const AddPropertyForm = () => {
               },
             ]}
           >
-            <Input />
+            <Input className='py-3' />
           </Form.Item>
 
 
-          <h1 className={`${styles.boldText} mb-2`}>Enter propperty Status</h1>
+          <h1 className={`${styles.boldText} mb-2`}>Enter property Status</h1>
 
           <Form.Item
             name="propertyStatus"
@@ -70,11 +70,11 @@ const AddPropertyForm = () => {
               },
             ]}
           >
-            <Input />
+            <Input className='py-3' />
           </Form.Item>
 
           
-          <h1 className={`${styles.boldText} mb-2`}>Enter propperty Tags</h1>
+          <h1 className={`${styles.boldText} mb-2`}>Enter property Tags</h1>
 
           <Form.Item
             name="propertyStatus"
@@ -85,7 +85,7 @@ const AddPropertyForm = () => {
               },
             ]}
           >
-            <Input />
+            <Input className='py-3' />
           </Form.Item>
 
 

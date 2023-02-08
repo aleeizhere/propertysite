@@ -1,13 +1,18 @@
-import React, { useState } from 'react'
-import logo from '../assets/stake-logo.svg'
-import { WalletOutlined, LineChartOutlined, StarOutlined, ShoppingCartOutlined, UserOutlined, LogoutOutlined } from '@ant-design/icons';
-import { Layout, Menu, Divider, Avatar, Popover, Button } from 'antd';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import logo from "../assets/stake-logo.svg";
+import {
+  WalletOutlined,
+  LineChartOutlined,
+  StarOutlined,
+  ShoppingCartOutlined,
+  UserOutlined,
+  LogoutOutlined,
+} from "@ant-design/icons";
+import { Layout, Menu, Divider, Avatar, Popover, Button } from "antd";
+import { Link } from "react-router-dom";
 const { Content, Sider } = Layout;
-import "./Sidebar.css"
-import styles from '../style';
-
-
+import "./Sidebar.css";
+import styles from "../style";
 
 // const items = [
 //   UploadOutlined, UserOutlined, VideoCameraOutlined
@@ -18,16 +23,24 @@ import styles from '../style';
 // }));
 
 const title = (
-  <Link to="/profilePage" className="flex items-center gap-x-2" style={{fontFamily:"Poppins"}}>
-    <UserOutlined className='text-xl' />
-    <h1 className='text-base font-normal'>My Profile</h1>
+  <Link
+    to="/profilePage"
+    className="flex items-center gap-x-2"
+    style={{ fontFamily: "Poppins" }}
+  >
+    <UserOutlined className="text-xl" />
+    <h1 className="text-base font-normal">My Profile</h1>
   </Link>
 );
 
 const content = (
-  <Link to="/" className="flex items-center gap-x-2" style={{fontFamily:"Poppins"}}>
-    <LogoutOutlined className='text-red-900 text-xl' />
-    <h1 className='text-base font-normal'>Logout</h1>
+  <Link
+    to="/"
+    className="flex items-center gap-x-2"
+    style={{ fontFamily: "Poppins" }}
+  >
+    <LogoutOutlined className="text-red-900 text-xl" />
+    <h1 className="text-base font-normal">Logout</h1>
   </Link>
 );
 
@@ -43,13 +56,12 @@ const SidebarLayout = ({ component, selectedKey }) => {
     { name: "Portfolio", icon: LineChartOutlined, linkTo: "/portfolio" },
     { name: "Rewards", icon: StarOutlined },
     { name: "My cart", icon: ShoppingCartOutlined, linkTo: "/cart" },
-
   ];
 
   return (
-    <Layout >
+    <Layout>
       <Sider
-        theme='light'
+        theme="light"
         width={"270px"}
         breakpoint="lg"
         collapsedWidth="0"
@@ -60,20 +72,30 @@ const SidebarLayout = ({ component, selectedKey }) => {
         collapsed={!sidebarOpen}
         className={`${sidebarOpen ? " ant-layout-sider-open" : ""}`}
       >
-        <Menu theme="light"
+        <Menu
+          theme="light"
           mode="inline"
           defaultSelectedKeys={[selectedKey]}
-          style={{ fontFamily: "Poppins" }}>
-
-          <Menu.Item key={0} style={{ height: '50px', margin: '10px' }}>
+          style={{ fontFamily: "Poppins" }}
+        >
+          <Menu.Item key={0} style={{ height: "50px", margin: "10px" }}>
             <Link to="/landingPage">
-              <img src={logo} alt="" />
+              {/* <img src={logo} alt="" /> */}
+              <img
+                src="src/assets/upstake-logo.webp"
+                alt=""
+                className="w-9/12"
+              />
             </Link>
           </Menu.Item>
           <Divider />
           {menus.map((menu, i) => (
             <Menu.Item key={i + 1}>
-              <Link to={menu?.linkTo} key={i} className="flex items-center text-lg gap-3.5 font-medium">
+              <Link
+                to={menu?.linkTo}
+                key={i}
+                className="flex items-center text-lg gap-3.5 font-medium"
+              >
                 {React.createElement(menu?.icon)}
                 <h2 className="whitespace-pre">{menu?.name}</h2>
               </Link>
@@ -81,16 +103,24 @@ const SidebarLayout = ({ component, selectedKey }) => {
           ))}
           <Divider />
 
-          <Menu.Item key={6} style={{ height: '' }} >
+          <Menu.Item key={6} style={{ height: "" }}>
             {/* <div className='flex items-center gap-2'>
               <Avatar icon={<UserOutlined />} className={`${styles.flexCenter}`} />
               <h1 className='text-lg font-medium'>Mark</h1>
             </div> */}
-            <Popover className='flex items-center gap-2' placement="right" title={title} content={content} trigger="click">
-              <Avatar icon={<UserOutlined />} className={`${styles.flexCenter}`} />
-              <h1 className='text-lg font-medium'>Mark</h1>
+            <Popover
+              className="flex items-center gap-2"
+              placement="right"
+              title={title}
+              content={content}
+              trigger="click"
+            >
+              <Avatar
+                icon={<UserOutlined />}
+                className={`${styles.flexCenter}`}
+              />
+              <h1 className="text-lg font-medium">Mark</h1>
             </Popover>
-
           </Menu.Item>
         </Menu>
       </Sider>
@@ -101,14 +131,16 @@ const SidebarLayout = ({ component, selectedKey }) => {
           }}
         /> */}
 
-
-
         <Content
           style={{
-            margin: '25px 10px 0',
-            fontFamily: "Poppins"
+            margin: "25px 10px 0",
+            fontFamily: "Poppins",
           }}
-          className={sidebarOpen ? "translate-x-[90px] md:translate-x-0 overflow-hidden" : ""}
+          className={
+            sidebarOpen
+              ? "translate-x-[90px] md:translate-x-0 overflow-hidden"
+              : ""
+          }
         >
           <div
             style={{
@@ -117,7 +149,7 @@ const SidebarLayout = ({ component, selectedKey }) => {
             }}
             className={`p-2 md:p-6 lg:p-8 `}
           >
-            <div >
+            <div>
               {/* <PropertiesTabs /> */}
               {component}
             </div>
@@ -132,8 +164,7 @@ const SidebarLayout = ({ component, selectedKey }) => {
         </Footer> */}
       </Layout>
     </Layout>
-  )
-}
+  );
+};
 
-
-export default SidebarLayout
+export default SidebarLayout;

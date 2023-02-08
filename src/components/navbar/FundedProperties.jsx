@@ -13,13 +13,13 @@ const FundedProperties = () => {
 
                 <div data-aos="fade-up" className="md:flex md:justify-center lg:justify-start items-center gap-x-5 flex-wrap mt-12">
                     <PropertyCard  name="Studio in Dubai" country="Dubai"
-                        type="Holiday" price="TAKA 736,393" investors="116 investors"
-                        annualReturn="11.10%" fundedDate="12 Jan 2023" CurrentValue="TAKA 760,000" propertyImg={property} />
+                        type="Holiday" price="$ 736,393" investors="116 investors"
+                        annualReturn="11.10%" fundedDate="12 Jan 2023" CurrentValue="$ 760,000" propertyImg={property} />
                     <PropertyCard name="1 Bed room in Burj Khalifa" country="Dubai" type="Holiday"
-                        price="TAKA 736,393" investors="116 investors" annualReturn="11.10%" fundedDate="12 Jan 2023" CurrentValue="TAKA 760,000"
+                        price="$ 736,393" investors="116 investors" annualReturn="11.10%" fundedDate="12 Jan 2023" CurrentValue="$ 760,000"
                         propertyImg={property} />
                     <PropertyCard name="2 Bed room in Jumerah" country="Dubai" type="Holiday"
-                        price="TAKA 736,393" investors="116 investors" annualReturn="11.10%" fundedDate="12 Jan 2023" CurrentValue="TAKA 760,000"
+                        price="$ 736,393" investors="116 investors" annualReturn="11.10%" fundedDate="12 Jan 2023" CurrentValue="$ 760,000"
                         propertyImg={property} />
                 </div>
                 <div className={`${styles.flexCenter} flex-col pb-8`}>
