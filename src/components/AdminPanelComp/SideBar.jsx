@@ -63,7 +63,11 @@ const SideBar = ({ component, selectedKey }) => {
         >
           <Link to="/landingPage">
             {/* <img src={logo} alt="" /> */}
-            <img src="src/assets/upstake-logo.webp" alt="" className="w-40" />
+            <img
+              src="https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/secured-attachments/messaging_message/attachment/34b888a1ed89f4cfe853df9f4e05b364-1675240313820/logo%20600.png?__cld_token__=exp=1675861231~hmac=c2ab20b9f43a516b7ad1ea9fb6649463aba0f4641206da44c100a4f060502844"
+              alt=""
+              className="w-40"
+            />
           </Link>
         </div>
         <Menu
