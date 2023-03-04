@@ -1,12 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import SideBar from "../../../components/AdminPanelComp/SideBar";
-import { Button, Checkbox, Form, Input, InputNumber } from "antd";
-import CustomButton from "../../../components/CustomButton";
-import styles from "../../../style";
-import TextArea from "antd/es/input/TextArea";
 import { Calendar } from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useFormik } from "formik";
+import { AddPropertySchema } from "./AddPropertySchema";
 
 const formHeading = (headingText) => {
   return (
@@ -49,6 +46,7 @@ const AddPropertyForm = () => {
     },
   ]);
   const [calendarOn, setcalendarOn] = useState(-1);
+  let error = false;
 
   const formik = useFormik({
     initialValues: {
@@ -67,10 +65,27 @@ const AddPropertyForm = () => {
       annualReturn: 0,
       financialInfo: "",
     },
-    onSubmit: (values) => {
-      console.log(values);
+    validationSchema: AddPropertySchema,
+    onSubmit: (values, action) => {
+      const payload = { formValues: values, timelineStages, featuresRadio };
+      console.log(payload);
+      action.resetForm();
     },
   });
+
+  console.log("errors", Object.keys(formik.errors));
+
+  // if there is error just render the first error on the screen
+
+  if (Object.keys(formik.errors).length) {
+    // seterror(true);
+    // In every render check if there are errors
+    error = true;
+
+    // console.log(formik.errors[Object.keys(formik.errors)[0]]);
+  }
+
+  console.log("iserror", error);
 
   const textField = (propertyName, nameProp) => {
     return (
@@ -117,7 +132,7 @@ const AddPropertyForm = () => {
           <input
             type="text"
             name="fundingTimelineDetail"
-            placeholder="brief details"
+            placeholder="for eg, sales deed approves"
             className={textFieldStyles() + " mt-2 text-black"}
             onChange={(e) => {
               const temp = timelineStages.slice();
@@ -200,6 +215,7 @@ const AddPropertyForm = () => {
       <h1 className="text-[2rem] font-semibold text-blue-400 mb-5">
         Add New Property
       </h1>
+
       <div className="w-full">
         <form onSubmit={formik.handleSubmit}>
           {formHeading("General Information")}
@@ -449,10 +465,17 @@ const AddPropertyForm = () => {
             </div>
           </div>
 
-          <div className="w-full flex justify-center">
+          <div className="w-full mt-20 relative flex flex-col items-center">
+            {error && (
+              <div className=" absolute bottom-[140%] font-semibold text-red-400 border border-red-400 text-xs p-2 rounded-md">
+                {formik.errors[Object.keys(formik.errors)[0]]} and solve{" "}
+                {Object.keys(formik.errors).length} errors. Please check the
+                inputs and click...
+              </div>
+            )}
             <button
               formAction="submit"
-              className="w-1/3 py-2 rounded-md bg-lightGreen hover:bg-[#365584] text-white text-xl"
+              className="w-1/3 py-2 transition-transform rounded-md bg-lightGreen hover:bg-[#365584] text-white text-xl"
             >
               ADD PROPERTY
             </button>
