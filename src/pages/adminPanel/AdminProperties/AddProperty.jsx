@@ -6,6 +6,7 @@ import styles from "../../../style";
 import TextArea from "antd/es/input/TextArea";
 import { Calendar } from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { useFormik } from "formik";
 
 const formHeading = (headingText) => {
   return (
@@ -27,15 +28,6 @@ const textFieldStyles = () => {
   return "w-full bg-gray-200 outline-none text-lg rounded-md p-2 outline-offset-0 focus:outline-1 focus:outline-blue-300 transition-all";
 };
 
-const textField = (propertyName, nameProp) => {
-  return (
-    <div className="flex flex-col">
-      <h1 className="text-gray-600 mb-2">{propertyName}</h1>
-      <input type="text" name={nameProp} className={textFieldStyles()} />
-    </div>
-  );
-};
-
 const AddProperty = () => {
   return (
     <>
@@ -46,27 +38,75 @@ const AddProperty = () => {
 
 const features = ["Location", "Residential", "ROI", "Occupancy", "Yield"];
 
-const onFinish = (values) => {
-  console.log("Success:", values);
-};
-const onFinishFailed = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
-
 const AddPropertyForm = () => {
   const featuresRadio = useRef(features.map((x) => false));
   const [specialClick, setSpecialClick] = useState(false);
-  const [timelineStages, settimelineStages] = useState(3);
+  const [timelineStages, settimelineStages] = useState([
+    {
+      details: "",
+      date: new Date().toDateString(),
+      time: new Date().getTime(),
+    },
+  ]);
   const [calendarOn, setcalendarOn] = useState(-1);
-  const [date, setdate] = useState(new Date());
+
+  const formik = useFormik({
+    initialValues: {
+      propName: "",
+      price: "",
+      location: "",
+      city: "",
+      locationDetails: "",
+      propertyOverview: "",
+      noOfBeds: "",
+      noOfBaths: "",
+      coveredArea: "",
+      transactionCost: 0,
+      stakeFee: 0,
+      valueAppr: 0,
+      annualReturn: 0,
+      financialInfo: "",
+    },
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
+  const textField = (propertyName, nameProp) => {
+    return (
+      <div className="flex flex-col">
+        <h1 className="text-gray-600 mb-2">{propertyName}</h1>
+        <input
+          type="text"
+          name={nameProp}
+          id={nameProp}
+          className={textFieldStyles()}
+          value={formik.values.nameProp}
+          onChange={formik.handleChange}
+        />
+      </div>
+    );
+  };
 
   const onCalChange = (date) => {
-    setdate(date);
+    const tempArr = timelineStages.slice();
+    const temp = {
+      ...tempArr[calendarOn],
+      time: date.getTime(),
+      date: date.toDateString(),
+    };
+    // take the deep copy of the state variable, make changes to it and then place in the state
+    tempArr.splice(calendarOn, 1, temp);
+    settimelineStages(tempArr);
+
+    // console.log(new Date().toDateString());
+    // setdate(date);
   };
 
   const fundingStages = () => {
     let tempArr = [];
-    for (let i = 0; i < timelineStages; i++) {
+    for (let i = 0; i < timelineStages.length; i++) {
+      // because JSX runs map over this
       tempArr.push(
         <div
           className="w-full text-gray-500
@@ -78,39 +118,71 @@ const AddPropertyForm = () => {
             type="text"
             name="fundingTimelineDetail"
             placeholder="brief details"
-            className={textFieldStyles() + " mt-2"}
-          />
-          <input
-            type="text"
-            name="fundingTimelineDate"
-            placeholder="date"
-            className={textFieldStyles() + " mt-2"}
-            value={date}
-            onClick={() => {
-              setcalendarOn(i);
+            className={textFieldStyles() + " mt-2 text-black"}
+            onChange={(e) => {
+              const temp = timelineStages.slice();
+              temp.splice(i, 1, { ...temp[i], details: e.target.value });
+              settimelineStages(temp);
             }}
           />
-          {calendarOn === i && <Calendar onChange={onCalChange} value={date} />}
-          {i === timelineStages - 1 && (
+          <div className="relative mt-2">
+            <input
+              type="text"
+              name="fundingTimelineDate"
+              placeholder="date"
+              className={textFieldStyles() + " pr-14 text-black"}
+              readOnly
+              value={timelineStages[i].date}
+              onClick={() => {
+                setcalendarOn(i);
+              }}
+            />
+            {/* Close calendar button */}
+            {calendarOn === i && (
+              <div
+                onClick={() => {
+                  setcalendarOn(-1);
+                }}
+                className="absolute right-0 top-1/2 -translate-y-1/2 mx-1 cursor-pointer text-red-400 font-semibold"
+              >
+                Close
+              </div>
+            )}
+          </div>
+          {/* turn on the calendar for this input only */}
+          {calendarOn === i && (
+            <Calendar
+              minDate={new Date()}
+              onChange={onCalChange}
+              value={new Date()}
+            />
+          )}
+          {/* show add stage button only with the last one */}
+          {i === timelineStages.length - 1 && (
             <div>
               <div
                 onClick={() => {
-                  settimelineStages(timelineStages + 1);
+                  settimelineStages([
+                    ...timelineStages,
+                    { details: "", date: "" },
+                  ]);
                 }}
                 className="inline-block border border-gray-300 w-fit p-1 cursor-pointer rounded-md mt-2 hover:border hover:border-gray-600 hover:text-gray-600"
               >
                 Add Stage
               </div>
-              <div
-                onClick={() => {
-                  if (timelineStages > 1) {
-                    settimelineStages(timelineStages - 1);
-                  }
-                }}
-                className="ml-2 inline-block border border-gray-300 w-fit p-1 cursor-pointer rounded-md mt-2 hover:border hover:border-red-600 hover:text-red-600"
-              >
-                Remove
-              </div>
+              {timelineStages.length > 1 && (
+                <div
+                  onClick={() => {
+                    settimelineStages(
+                      timelineStages.slice(0, timelineStages.length - 1)
+                    );
+                  }}
+                  className="ml-2 inline-block border border-gray-300 w-fit p-1 cursor-pointer rounded-md mt-2 hover:border hover:border-red-600 hover:text-red-600"
+                >
+                  Remove
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -118,6 +190,8 @@ const AddPropertyForm = () => {
     }
     return tempArr;
   };
+
+  // console.log(timelineStages);
 
   useEffect(() => {}, [specialClick]);
 
@@ -127,7 +201,7 @@ const AddPropertyForm = () => {
         Add New Property
       </h1>
       <div className="w-full">
-        <form>
+        <form onSubmit={formik.handleSubmit}>
           {formHeading("General Information")}
           <div className={outerStyles()}>
             {textField("Property Name", "propName")}
@@ -139,6 +213,9 @@ const AddPropertyForm = () => {
                 <input
                   type="text"
                   name="price"
+                  id="price"
+                  onChange={formik.handleChange}
+                  value={formik.values.price}
                   className={
                     "w-full pl-12 bg-gray-200 outline-none text-lg rounded-md p-2 outline-offset-0 focus:outline-1 focus:outline-blue-300 transition-all"
                   }
@@ -156,6 +233,9 @@ const AddPropertyForm = () => {
             <h1 className="text-gray-600 mb-2">Location Details</h1>
             <textarea
               name="locationDetails"
+              id="locationDetails"
+              onChange={formik.handleChange}
+              value={formik.values.locationDetails}
               className={textFieldStyles()}
               rows="7"
             ></textarea>
@@ -164,6 +244,9 @@ const AddPropertyForm = () => {
             <h1 className="text-gray-600 mb-2">Property Overview</h1>
             <textarea
               name="propertyOverview"
+              id="propertyOverview"
+              onChange={formik.handleChange}
+              value={formik.values.propertyOverview}
               className={textFieldStyles()}
               rows="7"
             ></textarea>
@@ -190,6 +273,7 @@ const AddPropertyForm = () => {
                     onClick={(e) => {
                       e.preventDefault();
                       featuresRadio.current.splice(index, 1, false);
+
                       setSpecialClick(!specialClick);
                     }}
                     className="w-full border-[1px] border-gray-800 cursor-pointer text-gray-900 text-xl text-center rounded-lg py-3 font-bold"
@@ -201,7 +285,10 @@ const AddPropertyForm = () => {
                     key={index}
                     onClick={(e) => {
                       e.preventDefault();
-                      featuresRadio.current.splice(index, 1, true);
+                      featuresRadio.current.splice(index, 1, {
+                        heading: "",
+                        details: "",
+                      });
                       setSpecialClick(!specialClick);
                     }}
                     className="w-full border-[1px] border-gray-400 cursor-pointer text-gray-400 text-xl text-center rounded-lg py-3 font-bold"
@@ -219,16 +306,46 @@ const AddPropertyForm = () => {
                         key={index}
                       >
                         <div>
-                          {textField(
-                            `${features[index]} Heading`,
-                            "featuresHeading"
-                          )}
+                          <div className="flex flex-col">
+                            <h1 className="text-gray-600 mb-2">
+                              {features[index] + " Heading"}
+                            </h1>
+                            <input
+                              type="text"
+                              // name={nameProp}
+                              // id={nameProp}
+                              className={textFieldStyles()}
+                              // value={formik.values.nameProp}
+                              onChange={(e) => {
+                                featuresRadio.current.splice(index, 1, {
+                                  ...featuresRadio.current[index],
+                                  heading: e.target.value,
+                                });
+                                setSpecialClick(!specialClick);
+                              }}
+                            />
+                          </div>
                         </div>
                         <div>
-                          {textField(
-                            `${features[index]} Details`,
-                            "featuresHeading"
-                          )}
+                          <div className="flex flex-col">
+                            <h1 className="text-gray-600 mb-2">
+                              {features[index] + " Details"}
+                            </h1>
+                            <input
+                              type="text"
+                              // name={nameProp}
+                              // id={nameProp}
+                              className={textFieldStyles()}
+                              // value={formik.values.nameProp}
+                              onChange={(e) => {
+                                featuresRadio.current.splice(index, 1, {
+                                  ...featuresRadio.current[index],
+                                  details: e.target.value,
+                                });
+                                setSpecialClick(!specialClick);
+                              }}
+                            />
+                          </div>
                         </div>
                       </div>
                     )
@@ -249,6 +366,9 @@ const AddPropertyForm = () => {
                   <input
                     type="text"
                     name="transactionCost"
+                    id="transactionCost"
+                    onChange={formik.handleChange}
+                    value={formik.values.transactionCost}
                     className={
                       "w-full pl-12 bg-gray-200 outline-none text-lg rounded-md p-2 outline-offset-0 focus:outline-1 focus:outline-blue-300 transition-all"
                     }
@@ -264,6 +384,9 @@ const AddPropertyForm = () => {
                   <input
                     type="text"
                     name="stakeFee"
+                    id="stakeFee"
+                    onChange={formik.handleChange}
+                    value={formik.values.stakeFee}
                     className={
                       "w-full pr-12 bg-gray-200 outline-none text-lg rounded-md p-2 outline-offset-0 focus:outline-1 focus:outline-blue-300 transition-all"
                     }
@@ -279,6 +402,9 @@ const AddPropertyForm = () => {
                   <input
                     type="text"
                     name="valueAppr"
+                    id="valueAppr"
+                    onChange={formik.handleChange}
+                    value={formik.values.valueAppr}
                     className={
                       "w-full pr-12 bg-gray-200 outline-none text-lg rounded-md p-2 outline-offset-0 focus:outline-1 focus:outline-blue-300 transition-all"
                     }
@@ -294,6 +420,9 @@ const AddPropertyForm = () => {
                   <input
                     type="text"
                     name="annualReturn"
+                    id="annualReturn"
+                    onChange={formik.handleChange}
+                    value={formik.values.annualReturn}
                     className={
                       "w-full pr-12 bg-gray-200 outline-none text-lg rounded-md p-2 outline-offset-0 focus:outline-1 focus:outline-blue-300 transition-all"
                     }
@@ -304,6 +433,9 @@ const AddPropertyForm = () => {
                 <h1 className="text-gray-600 mb-2">Financial Information</h1>
                 <textarea
                   name="financialInfo"
+                  id="financialInfo"
+                  value={formik.values.financialInfo}
+                  onChange={formik.handleChange}
                   className={textFieldStyles()}
                   rows="4"
                 ></textarea>
@@ -315,6 +447,15 @@ const AddPropertyForm = () => {
             <div className="grid grid-cols-3 my-5 gap-2 gap-y-5">
               {fundingStages()}
             </div>
+          </div>
+
+          <div className="w-full flex justify-center">
+            <button
+              formAction="submit"
+              className="w-1/3 py-2 rounded-md bg-lightGreen hover:bg-[#365584] text-white text-xl"
+            >
+              ADD PROPERTY
+            </button>
           </div>
         </form>
       </div>
