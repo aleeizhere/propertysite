@@ -1,9 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import SideBar from "../../../components/AdminPanelComp/SideBar";
+
 import { Calendar } from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useFormik } from "formik";
 import { AddPropertySchema } from "./AddPropertySchema";
+import axios from "axios";
+import { backend_url } from "../../../api";
+import { getProperties } from "../../../store/propertiesActions";
+import { useDispatch } from "react-redux";
 
 const formHeading = (headingText) => {
   return (
@@ -47,6 +52,7 @@ const AddPropertyForm = () => {
   ]);
   const [calendarOn, setcalendarOn] = useState(-1);
   let error = false;
+  const [responseStatus, setresponseStatus] = useState("");
 
   const formik = useFormik({
     initialValues: {
@@ -66,14 +72,38 @@ const AddPropertyForm = () => {
       financialInfo: "",
     },
     validationSchema: AddPropertySchema,
-    onSubmit: (values, action) => {
+    onSubmit: async (values, action) => {
       const payload = { formValues: values, timelineStages, featuresRadio };
-      console.log(payload);
-      action.resetForm();
+
+      try {
+        const res = await axios.post(
+          `${backend_url}admin/createproperty`,
+          payload
+        );
+
+        setresponseStatus({
+          status: res.status,
+          message: res.data.message,
+        });
+        setTimeout(() => {
+          setresponseStatus("");
+        }, 4000);
+        action.resetForm();
+      } catch (e) {
+        console.log(e);
+        if (e.response.status === 500) {
+          // set the response text to
+          setresponseStatus({
+            status: e.response.status,
+            message: e.response.data.message,
+          });
+          setTimeout(() => {
+            setresponseStatus("");
+          }, 4000);
+        }
+      }
     },
   });
-
-  console.log("errors", Object.keys(formik.errors));
 
   // if there is error just render the first error on the screen
 
@@ -81,11 +111,7 @@ const AddPropertyForm = () => {
     // seterror(true);
     // In every render check if there are errors
     error = true;
-
-    // console.log(formik.errors[Object.keys(formik.errors)[0]]);
   }
-
-  console.log("iserror", error);
 
   const textField = (propertyName, nameProp) => {
     return (
@@ -473,6 +499,19 @@ const AddPropertyForm = () => {
                 inputs and click...
               </div>
             )}
+
+            {responseStatus !== "" && (
+              <div
+                className={`absolute bottom-[140%] font-semibold ${
+                  responseStatus.status === 500
+                    ? " text-red-400 border-red-400"
+                    : "text-green-400 border-green-400"
+                } border  text-xs p-2 rounded-md`}
+              >
+                {responseStatus.message}
+              </div>
+            )}
+
             <button
               formAction="submit"
               className="w-1/3 py-2 transition-transform rounded-md bg-lightGreen hover:bg-[#365584] text-white text-xl"

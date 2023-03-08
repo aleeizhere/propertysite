@@ -11,7 +11,7 @@ export const AddPropertySchema = Yup.object({
   //     .oneOf([Yup.ref("password"), null], "Passwords did not match"),
   propName: Yup.string().min(5).max(25).required("Property Name is required"),
   price: Yup.string().required("Please enter the price"),
-  location: Yup.string().min(5).max(25).required("Location is required"),
+  location: Yup.string().min(2).max(25).required("Location is required"),
   city: Yup.string().max(15).required("City is Required"),
   locationDetails: Yup.string()
     .min(5)
