@@ -14,6 +14,8 @@ import ImageSlider from "../../components/ImageSlider";
 import styles from "../../style";
 import FinancialDetails from "../../components/PropertyDetailsComp/FinancialDetails";
 import PriceCard from "../../components/PropertyDetailsComp/PriceCard";
+import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const homeDetails = [
   {
@@ -43,7 +45,16 @@ const homeDetails = [
   },
 ];
 
+const featuresIcons = [
+  <UserOutlined />,
+  <HomeOutlined />,
+  <MoneyCollectOutlined />,
+  <CalendarOutlined />,
+  <LineChartOutlined />,
+];
+
 const PropertyDetailsTab = () => {
+  // put the properties in the props
   let propertyDesc = `Lorem ipsum dolor sit amet consectetur adipisicing elit. In officiis ratione id! Dolore voluptates neque similique ullam! Voluptatem beatae aliquam labore magni quibusdam expedita consectetur dolores corporis pariatur. Debitis, hic!
     Perspiciatis deserunt quidem quae molestiae cumque, sunt at molestias distinctio, fugiat quis qui. Voluptatum illo incidunt excepturi optio qui commodi eaque id eveniet vitae, labore, eligendi ducimus. Laudantium, quaerat repellendus!
     Dolore esse sequi voluptates praesentium, animi natus, ex veritatis laborum aspernatur pariatur dolorum nesciunt sit id illum repudiandae suscipit? Pariatur, numquam omnis ab deleniti nesciunt velit iusto itaque quas ipsam!
@@ -68,6 +79,35 @@ const PropertyDetailsTab = () => {
     }
   };
 
+  const { propertyNumber } = useParams();
+
+  const properties = useSelector(
+    (state) => state.propertiesSlice.client.available
+  );
+
+  const navigate = useNavigate();
+
+  if (!properties[propertyNumber]) {
+    navigate("/homepage");
+  }
+
+  const { property, isAvailable, investedAmount, numInvestors } =
+    properties[propertyNumber];
+
+  const {
+    propertyName,
+    totalValue,
+    city,
+    location,
+    lowestValue,
+    propertyFeatures,
+    financialDetails,
+    fundingTimeline,
+    locationDetails,
+  } = property;
+
+  console.log(property);
+
   return (
     <div className="">
       <h1
@@ -86,47 +126,53 @@ const PropertyDetailsTab = () => {
             <h1
               className={`${styles.boldText} text-lightGreen font-bold md:text-3xl mt-8`}
             >
-              Studio in Studio One - Dubai Marina
+              {propertyName}
             </h1>
             <h1 className="text-xs md:text-sm">
-              1 bath{" "}
+              {propertyFeatures.noBaths} Baths{" "}
               <span>
                 {" "}
                 <Divider type="vertical" className="border-black" />{" "}
               </span>{" "}
-              Studio{" "}
+              {propertyFeatures.noBeds} Beds{" "}
               <span>
                 {" "}
                 <Divider className="border-black" type="vertical" />{" "}
               </span>{" "}
-              358 sq.ft{" "}
+              {propertyFeatures.converedArea} sq.ft{" "}
               <span>
                 {" "}
                 <Divider className="border-black" type="vertical" />{" "}
               </span>{" "}
-              Dubai Marina
+              {city}
             </h1>
 
             <Divider className="border-black" />
 
             {/* section one */}
             <div className="flex flex-col gap-y-6">
-              {homeDetails.map((detail, i) => (
-                <div className="flex gap-x-6">
-                  <div
-                    key={i}
-                    className="p-3 text-2xl rounded-[100%] flex items-center h-11 w-10"
-                  >
-                    {detail.icon}
+              {propertyFeatures.featureSection.length ? (
+                propertyFeatures.featureSection.map((feature, i) => (
+                  <div className="flex gap-x-6">
+                    <div
+                      key={i}
+                      className="p-3 text-2xl rounded-[100%] flex items-center h-11 w-10"
+                    >
+                      {featuresIcons[i]}
+                    </div>
+                    <div>
+                      <h1 className="font-bold text-lg">{feature.heading}</h1>
+                      <p className="text-sm font-light text-gray-600">
+                        {feature.details}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h1 className="font-bold text-lg">{detail.heading}</h1>
-                    <p className="text-sm font-light text-gray-600">
-                      {detail.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
+                ))
+              ) : (
+                <>
+                  <div className="flex gap-x-6"> No Features</div>
+                </>
+              )}
             </div>
 
             <Divider className="border-lightGray" />
@@ -139,7 +185,7 @@ const PropertyDetailsTab = () => {
             </h1>
             <div className="pb-4">
               <p>
-                {text} {!readMore && "..."}
+                {propertyFeatures.propertyOverview} {!readMore && "..."}
               </p>
               <p
                 onClick={showMore}
@@ -153,7 +199,7 @@ const PropertyDetailsTab = () => {
             <Divider className="border-lightGray" />
 
             {/* Financial Details */}
-            <FinancialDetails />
+            <FinancialDetails details={financialDetails} price={totalValue} />
             <Divider className="border-lightGray" />
 
             {/* Funnding TimeLine */}
@@ -166,32 +212,13 @@ const PropertyDetailsTab = () => {
             {/* Steps */}
             <Steps
               progressDot
-              current={2}
+              current={1}
               direction="vertical"
               size="default"
               className="font-bold pt-3"
-              items={[
-                {
-                  title: "January 12th, 2023",
-                  description: "Closing Date",
-                },
-                {
-                  title: "February 2nd, 2023",
-                  description: "SPV created and title deeds distributed",
-                },
-                {
-                  title: "February 9th, 2023",
-                  description: "DTCM application approved",
-                },
-                {
-                  title: "February 9th, 2023",
-                  description: "Handover to property manager",
-                },
-                {
-                  title: "April 27th, 2023",
-                  description: "Expected first rental payment",
-                },
-              ]}
+              items={fundingTimeline.map((e) => {
+                return { title: e.date, description: e.details };
+              })}
             />
             <Divider className="border-lightGray" />
 
@@ -208,15 +235,9 @@ const PropertyDetailsTab = () => {
                   {" "}
                   <InfoOutlined />{" "}
                 </span>{" "}
-                Dubai Marina, Dubai United Arab Emirates{" "}
+                {location}{" "}
               </h1>
-              <h1 className="text-base pt-5 font-thin">
-                Dubai Marina is one of the premier neighbourhoods in Dubai. This
-                impressive community boasts luxury skyscrapers, a range of
-                dining and entertainment options and urban waterfront living to
-                its residents. It is the most popular area for renting luxury
-                apartments in Dubai.
-              </h1>
+              <h1 className="text-base pt-5 font-thin">{locationDetails}</h1>
             </div>
             <Divider className="border-lightGray" />
 
@@ -241,7 +262,16 @@ const PropertyDetailsTab = () => {
 
         {/* Right Div Content */}
         <div className="w-full md:w-[35%] md:h-fit p-2 md:p-5 md:sticky top-6 mt-8 bg-white rounded-lg">
-          <PriceCard />
+          <PriceCard
+            details={{
+              financialDetails,
+              isAvailable,
+              investedAmount,
+              numInvestors,
+              totalValue,
+              propertyId: property._id,
+            }}
+          />
         </div>
       </div>
     </div>

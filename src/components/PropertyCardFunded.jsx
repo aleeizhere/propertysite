@@ -3,21 +3,20 @@ import { Link } from "react-router-dom";
 import property from "../assets/property.jpeg";
 import styles from "../style";
 
-const PropertyCard = ({
-  propInd,
+const PropertyCardFunded = ({
   name,
   type,
   country,
   price,
   investors,
   annualReturn,
-  lowestAmount,
-  rent,
+  fundedDate,
+  CurrentValue,
   propertyImg,
 }) => {
   return (
     <div class="sm:w-1/2 lg:w-[30%] mb-10 mx-2 bg-white rounded-lg pb-8 shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-      <Link to={`/property/${propInd}`}>
+      <Link to={"/property/5"}>
         <div class="rounded-lg h-64 overflow-hidden">
           <img
             alt="content"
@@ -30,9 +29,6 @@ const PropertyCard = ({
           <h6 className="border rounded-sm p-1 text-xs">{type}</h6>
         </div>
         <div className="flex justify-between px-4 mt-5">
-          <h1 className={`${styles.boldText} text-lightGreen`}>{name}</h1>
-        </div>
-        <div className="flex justify-between px-4 mt-5">
           <h1 className={`${styles.boldText} text-lightGreen`}>{price}</h1>
           <h1>{investors}</h1>
         </div>
@@ -43,12 +39,12 @@ const PropertyCard = ({
             <h1 className="font-bold">{annualReturn}</h1>
           </div>
           <div className="flex justify-between">
-            <h1 className="">Lowest Amount</h1>
-            <h1 className="font-bold">{lowestAmount}</h1>
+            <h1 className="">Funded Date</h1>
+            <h1 className="font-bold">{fundedDate}</h1>
           </div>
           <div className="flex justify-between">
-            <h1 className="">Rent</h1>
-            <h1 className="font-bold">{rent}</h1>
+            <h1 className="">Current Valuation</h1>
+            <h1 className="font-bold">{CurrentValue}</h1>
           </div>
         </div>
       </Link>
@@ -56,4 +52,4 @@ const PropertyCard = ({
   );
 };
 
-export default PropertyCard;
+export default PropertyCardFunded;

@@ -5,6 +5,29 @@ import { propertiesActions } from "./propertiesSlice";
 export const getProperties = () => {
   return async (dispatch) => {
     try {
+      const res = await axios.get(backend_url + "client/getproperties");
+
+      let available = [];
+      let funded = [];
+
+      // console.log(res);
+
+      res.data.data.forEach((prop) => {
+        if (prop.isAvailable) {
+          available.push(prop);
+        } else {
+          funded.push(prop);
+        }
+      });
+      dispatch(propertiesActions.setProperties({ available, funded }));
+    } catch (e) {
+      console.log("get properties broken because ", e);
+    }
+  };
+};
+export const getAdminProperties = () => {
+  return async (dispatch) => {
+    try {
       const res = await axios.get(backend_url + "getproperties");
 
       let available = [];
@@ -17,6 +40,28 @@ export const getProperties = () => {
         }
       });
       dispatch(propertiesActions.setProperties({ available, funded }));
+    } catch (e) {
+      console.log("get properties broken because ", e);
+    }
+  };
+};
+export const clientInvest = (investorId, propertyId, amount, investingDate) => {
+  return async (dispatch) => {
+    try {
+      console.log(investorId, propertyId, amount, investingDate);
+      const res = await axios.post(backend_url + "client/invest", {
+        investorId,
+        amount,
+        investingDate,
+        propertyId,
+      });
+      console.log(res);
+      let available = [];
+      let funded = [];
+
+      // console.log(res);
+
+      dispatch(getProperties());
     } catch (e) {
       console.log("get properties broken because ", e);
     }

@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const propertiesSlice = createSlice({
   name: "properties",
-  initialState: { available: [], funded: [] },
+  initialState: { client: { available: [], funded: [] }, admin: {} },
   reducers: {
     setProperties(state, action) {
-      state.available = action.payload.available;
-      state.funded = action.payload.funded;
+      state.client.available = action.payload.available;
+      state.client.funded = action.payload.funded;
     },
   },
 });

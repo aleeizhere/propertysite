@@ -1,23 +1,31 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import logo from "../assets/stake-logo.svg";
 import styles from "../style";
 import CustomButton from "./CustomButton";
 import InputField from "./InputField";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { authActions } from "../store/authSlice";
+import { backend_url } from "../api";
+import axios from "axios";
+import { signin } from "../store/authActions";
 const LoginForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const authState = useSelector((state) => state.authSlice);
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
 
-  const emailRef = useRef("");
-  const passwordRef = useRef("");
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({
-      email: emailRef.current.value,
-      password: passwordRef.current.value,
-    });
-    navigate("/homePage");
+    dispatch(signin(email, password));
   };
+
+  useEffect(() => {
+    if (authState.profile !== null) {
+      navigate("/homepage", { replace: true });
+    }
+  }, [authState]);
 
   return (
     <div className="w-11/12 md:w-4/5 m-auto">
@@ -32,24 +40,33 @@ const LoginForm = () => {
 
       <h1 className={`${styles.boldText} mb-2`}>Email Address</h1>
       {/* Input comp */}
-      <form action="" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <InputField
-          refs={emailRef}
           type="email"
           placeholder={"E.g YourCompany@company.com"}
+          value={email}
+          setvalue={setemail}
         />
 
         <h1 className={`${styles.boldText} mt-8 mb-2`}>Password</h1>
         {/* Input comp */}
         <InputField
-          refs={passwordRef}
           type="password"
-          placeholder={"Enter your password"}
+          placeholder={"password here"}
+          value={password}
+          setvalue={setpassword}
         />
 
         {/* Login button */}
         <CustomButton type={"submit"} text="Login" />
-        {/* <button type="submit" className={`bg-lightGreen p-2 w-full rounded-lg text-white mt-5 ${styles.flexCenter} ${styles.boldText}`}>
+        {/* <button
+          type="submit"
+          // onClick={async () => {
+          //   console.log("ali");
+          //   await axios.post(`${backend_url}auth/login`, {});
+          // }}
+          className={`bg-lightGreen p-2 w-full rounded-lg text-white mt-5 ${styles.flexCenter} ${styles.boldText}`}
+        >
           Login
         </button> */}
       </form>

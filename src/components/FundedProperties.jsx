@@ -1,13 +1,14 @@
 import React from "react";
-import propertyImg from "../assets/property.jpeg";
+import property from "../assets/property.jpeg";
 import property2 from "../assets/property2.jpeg";
 import PropertyCard from "./PropertyCard";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import PropertyCardFunded from "./PropertyCardFunded";
 
-const AvailableProperties = () => {
+const FundedProperties = () => {
   const properties = useSelector(
-    (state) => state.propertiesSlice.client.available
+    (state) => state.propertiesSlice.client.funded
   );
 
   return (
@@ -15,7 +16,6 @@ const AvailableProperties = () => {
       <div className=" py-5 mx-auto">
         <div className="md:flex md:justify-center lg:justify-start items-center flex-wrap -mx-4 -mb-10">
           {properties.map((i, index) => {
-            const { property, isAvailable, investedAmount, numInvestors } = i;
             const {
               propertyName,
               totalValue,
@@ -26,20 +26,20 @@ const AvailableProperties = () => {
               financialDetails,
               fundingTimeline,
               locationDetails,
-            } = property;
+              numInvestors,
+            } = i;
             return (
-              <PropertyCard
-                key={index}
-                propInd={index}
-                name={propertyName}
-                country={city}
+              <PropertyCardFunded
+                key={"index"}
+                name="Studio in Dubai"
+                country="Dubai"
                 type="Holiday"
                 price={`$ ${totalValue.toLocaleString()}`}
                 investors={`${numInvestors} Investors`}
-                annualReturn={`${financialDetails.valueAppr}%`}
-                lowestAmount={`$ ${lowestValue}`}
-                rent={`$ ${financialDetails.rent}`}
-                propertyImg={propertyImg}
+                annualReturn="11.10%"
+                fundedDate="12 Jan 2023"
+                CurrentValue="$ 760,000"
+                propertyImg={property}
               />
             );
           })}
@@ -49,4 +49,4 @@ const AvailableProperties = () => {
   );
 };
 
-export default AvailableProperties;
+export default FundedProperties;

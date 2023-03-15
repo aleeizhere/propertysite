@@ -58,6 +58,7 @@ const AddPropertyForm = () => {
     initialValues: {
       propName: "",
       price: "",
+      rent: "",
       location: "",
       city: "",
       locationDetails: "",
@@ -258,6 +259,22 @@ const AddPropertyForm = () => {
                   id="price"
                   onChange={formik.handleChange}
                   value={formik.values.price}
+                  className={
+                    "w-full pl-12 bg-gray-200 outline-none text-lg rounded-md p-2 outline-offset-0 focus:outline-1 focus:outline-blue-300 transition-all"
+                  }
+                />
+              </div>
+            </div>
+            <div className="flex flex-col">
+              <h1 className="text-gray-600 mb-2">Rent</h1>
+              <div className="flex items-center relative w-full bg-gray-400 text-lg rounded-md">
+                <p className="absolute text-gray-600 font-semibold ml-2">USD</p>
+                <input
+                  type="text"
+                  name="rent"
+                  id="rent"
+                  onChange={formik.handleChange}
+                  value={formik.values.rent}
                   className={
                     "w-full pl-12 bg-gray-200 outline-none text-lg rounded-md p-2 outline-offset-0 focus:outline-1 focus:outline-blue-300 transition-all"
                   }
