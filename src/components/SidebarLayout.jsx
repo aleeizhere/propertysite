@@ -9,10 +9,13 @@ import {
   LogoutOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Divider, Avatar, Popover, Button } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const { Content, Sider } = Layout;
 import "./Sidebar.css";
 import styles from "../style";
+import { useDispatch } from "react-redux";
+import { authActions } from "../store/authSlice";
+import propertiesSlice, { propertiesActions } from "../store/propertiesSlice";
 
 // const items = [
 //   UploadOutlined, UserOutlined, VideoCameraOutlined
@@ -22,40 +25,45 @@ import styles from "../style";
 //   label: `nav ${index + 1}`,
 // }));
 
-const title = (
-  <Link
-    to="/profilePage"
-    className="flex items-center gap-x-2"
-    style={{ fontFamily: "Poppins" }}
-  >
-    <UserOutlined className="text-xl" />
-    <h1 className="text-base font-normal">My Profile</h1>
-  </Link>
-);
-
-const content = (
-  <Link
-    to="/"
-    className="flex items-center gap-x-2"
-    style={{ fontFamily: "Poppins" }}
-  >
-    <LogoutOutlined className="text-red-900 text-xl" />
-    <h1 className="text-base font-normal">Logout</h1>
-  </Link>
-);
-
 const SidebarLayout = ({ component, selectedKey }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
+
+  const title = (
+    <Link
+      to="/profilePage"
+      className="flex items-center gap-x-2"
+      style={{ fontFamily: "Poppins" }}
+    >
+      <UserOutlined className="text-xl" />
+      <h1 className="text-base font-normal">My Profile</h1>
+    </Link>
+  );
+
+  const content = (
+    <div
+      className="flex cursor-pointer"
+      onClick={() => {
+        dispatch(authActions.removeAuth());
+        dispatch(propertiesActions.removeProperties());
+        navigate("/");
+      }}
+    >
+      <LogoutOutlined className="text-red-900 text-xl" />
+      <h1 className="text-base font-normal">Logout</h1>
+    </div>
+  );
 
   const menus = [
     { name: "Properties", icon: WalletOutlined, linkTo: "/homePage" },
     { name: "Wallet", icon: WalletOutlined, linkTo: "/wallet" },
     { name: "Portfolio", icon: LineChartOutlined, linkTo: "/portfolio" },
     { name: "Rewards", icon: StarOutlined },
-    { name: "My cart", icon: ShoppingCartOutlined, linkTo: "/cart" },
+    // { name: "My cart", icon: ShoppingCartOutlined, linkTo: "/cart" },
   ];
 
   return (

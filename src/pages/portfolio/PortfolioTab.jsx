@@ -11,55 +11,72 @@ import {
 } from "@ant-design/icons";
 import InsightsCard from "../../components/InsightsCard";
 import { Divider, Table } from "antd";
-
-const data = [
-  {
-    key: "1",
-    property: "deposit",
-    location: "completed",
-    investmentValue: "24 jan 2023",
-    rentEarned: "100100",
-  },
-  {
-    key: "2",
-    property: "deposit",
-    location: "pending",
-    investmentValue: "21 Jan 2023",
-    rentEarned: "5005000",
-  },
-  {
-    key: "3",
-    property: "withdraw",
-    location: "pending",
-    investmentValue: "29 Dec 2022",
-    rentEarned: "5005000",
-  },
-];
-
-const columns = [
-  {
-    title: "Property",
-    dataIndex: "property",
-    key: "property",
-  },
-  {
-    title: "Location",
-    dataIndex: "location",
-    key: "location",
-  },
-  {
-    title: "Investment Value",
-    dataIndex: "investmentValue",
-    key: "investmentValue",
-  },
-  {
-    title: "Rent Earned",
-    dataIndex: "rentEarned",
-    key: "rentEarned",
-  },
-];
+import { useSelector } from "react-redux";
 
 const PortfolioTab = () => {
+  const portfolio = useSelector((state) => state.authSlice.profile.portfolio);
+
+  const { available, funded } = useSelector(
+    (state) => state.propertiesSlice.client
+  );
+  const propertiesAll = [...available, ...funded];
+
+  let portfolioValue = 0;
+  let monthlyIncome = 0;
+  let totalIncome = 0;
+  let noOfProps = portfolio.length;
+  let annualRental = 0;
+
+  portfolio.forEach((p) => {
+    portfolioValue += p.investedAmount;
+    monthlyIncome += p.rentPerMonth;
+    totalIncome += p.rentEarned;
+    annualRental += p.rentEarned * 12;
+  });
+
+  const columns = [
+    {
+      title: "Property",
+      dataIndex: "property",
+      key: "property",
+    },
+    {
+      title: "Investment",
+      dataIndex: "investment",
+      key: "investment",
+    },
+    {
+      title: "Rent Earned",
+      dataIndex: "rent",
+      key: "rent",
+    },
+    {
+      title: "Next Rent Date",
+      dataIndex: "nextRent",
+      key: "nextRent",
+    },
+    {
+      title: "Rent Per Month",
+      dataIndex: "rentMonth",
+      key: "rentMonth",
+    },
+  ];
+
+  console.log(propertiesAll);
+
+  const data = portfolio.map((p) => {
+    const { property, investedAmount, rentEarned, nextRentDate, rentPerMonth } =
+      p;
+    const propertyName = propertiesAll.find((p) => p.property._id === property)
+      .property.propertyName;
+    return {
+      property: propertyName,
+      investment: `$ ${investedAmount.toLocaleString()}`,
+      rent: `$ ${rentEarned.toLocaleString()}`,
+      nextRent: new Date(nextRentDate).toDateString(),
+      rentMonth: `$ ${rentPerMonth.toFixed(2).toLocaleString()}`,
+    };
+  });
   return (
     <div className="">
       <h1 className={`${styles.boldText} text-lightGreen text-center text-3xl`}>
@@ -71,7 +88,9 @@ const PortfolioTab = () => {
       <div className="bg-white p-7 mt-12 md:min-h-[30rem] flex flex-col items-center justify-around">
         <div className="w-fit text-center">
           <h1 className="font-normal md:text-lg mb-2 ">Portfolio Value</h1>
-          <h1 className={`${styles.boldText} text-7xl`}>$0</h1>
+          <h1 className={`${styles.boldText} text-7xl`}>
+            ${portfolioValue.toLocaleString()}
+          </h1>
         </div>
         <div className={`${styles.flexCenter} flex-col`}>
           <h1 className="font-normal md:text-lg text-center">
@@ -94,13 +113,13 @@ const PortfolioTab = () => {
 
       <div className="flex flex-col gap-y-3 md:flex-row justify-between mt-12">
         <BalanceCard
-          heading="Monthly income (Jan 2023)"
-          amount="$ 15000"
+          heading="Monthly Rent"
+          amount={`$ ${monthlyIncome.toFixed(2)}`}
           icon={<RiseOutlined className="iconStyleLg" />}
         />
         <BalanceCard
-          heading="Total income (As of Jan 2023)"
-          amount="$ 45000"
+          heading="Total Earned"
+          amount={`$ ${totalIncome}`}
           icon={<RiseOutlined className="iconStyleLg" />}
         />
       </div>
@@ -117,7 +136,7 @@ const PortfolioTab = () => {
       <div className="flex flex-col gap-y-3 md:flex-row justify-between mt-12">
         <InsightsCard
           heading="Number of Properties"
-          amount="5"
+          amount={`${noOfProps}`}
           icon={<HomeOutlined className="iconStyle" />}
         />
         <InsightsCard
@@ -127,7 +146,7 @@ const PortfolioTab = () => {
         />
         <InsightsCard
           heading="Annaulised Rental Yield"
-          amount="25,000"
+          amount={`$ ${annualRental / noOfProps}`}
           icon={<BarChartOutlined className="iconStyle" />}
         />
       </div>
@@ -138,15 +157,6 @@ const PortfolioTab = () => {
         className={`${styles.boldText} mt-12 text-lightGreen text-center text-3xl`}
       >
         Active Investments
-      </h1>
-      <Divider className="border-lightGray" />
-
-      <div className="mt-12">
-        <Table columns={columns} dataSource={data} />
-      </div>
-
-      <h1 className={`${styles.boldText} text-lightGreen text-center text-3xl`}>
-        Live Investments
       </h1>
       <Divider className="border-lightGray" />
 

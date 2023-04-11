@@ -8,6 +8,10 @@ const propertiesSlice = createSlice({
       state.client.available = action.payload.available;
       state.client.funded = action.payload.funded;
     },
+    removeProperties(state) {
+      state.client.available = [];
+      state.client.funded = [];
+    },
   },
 });
 

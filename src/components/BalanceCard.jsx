@@ -4,7 +4,7 @@ import { StarOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import CustomButton from "./CustomButton";
 
-const BalanceCard = ({ heading, amount, btns, icon }) => {
+const BalanceCard = ({ heading, amount, btns, icon, setopen }) => {
   return (
     <div className="flex justify-between md:flex-row md:w-[48%] p-2 md:p-5 bg-white rounded-lg">
       <div className=" flex flex-col justify-evenly">
@@ -21,7 +21,13 @@ const BalanceCard = ({ heading, amount, btns, icon }) => {
                         </Link> */}
 
           <Link className="w-full">
-            <CustomButton type="button" text="Deposit" />
+            <CustomButton
+              type="button"
+              text="Deposit"
+              onClick={() => {
+                setopen(true);
+              }}
+            />
           </Link>
           {/* <h1 className={`md:${styles.boldText} cursor-pointer bg-creamWhite w-full text-center rounded-lg p-2`}>withdraw</h1> */}
           <Link

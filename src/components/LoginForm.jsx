@@ -12,7 +12,7 @@ import { signin } from "../store/authActions";
 const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const authState = useSelector((state) => state.authSlice);
+
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
 
@@ -20,12 +20,6 @@ const LoginForm = () => {
     e.preventDefault();
     dispatch(signin(email, password));
   };
-
-  useEffect(() => {
-    if (authState.profile !== null) {
-      navigate("/homepage", { replace: true });
-    }
-  }, [authState]);
 
   return (
     <div className="w-11/12 md:w-4/5 m-auto">

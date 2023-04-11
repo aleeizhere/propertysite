@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Router, Routes, useNavigate } from "react-router-dom";
 import Wallet from "./pages/wallet/Wallet";
 import ConfirmEmail from "./pages/AuthPages/ConfirmEmail";
 import CreatePassword from "./pages/AuthPages/CreatePassword";
@@ -19,6 +19,9 @@ import UsersList from "./pages/adminPanel/users/UsersList";
 import RentDetails from "./pages/adminPanel/rentDetails/RentDetails";
 import BankDetails from "./pages/adminPanel/BankDetails/BankDetails";
 import AddBank from "./pages/adminPanel/BankDetails/AddBank";
+import { useSelector } from "react-redux";
+import PrivateRoutes from "./components/utils/Privateroutes";
+import Adminprivate from "./components/utils/Adminprivate";
 
 function App() {
   return (
@@ -32,22 +35,29 @@ function App() {
         <Route path="/createPassword" element={<CreatePassword />} />
         <Route path="/phNumber" element={<PhoneNumber />} />
         <Route path="/verifyNum" element={<VerfiyPhone />} />
-        <Route path="/homePage" element={<HomePage />} />
-        <Route path="/wallet" element={<Wallet />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/landingPage" element={<LandingPage />} />
-        <Route path="/property/:propertyNumber" element={<PropertyDetails />} />
-        <Route path="profilePage" element={<ProfilePage />} />
-
+        {/* Protected Routes */}
+        <Route element={<PrivateRoutes />}>
+          <Route path="/homePage" element={<HomePage />} />
+          <Route path="/wallet" element={<Wallet />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/landingPage" element={<LandingPage />} />
+          <Route
+            path="/property/:propertyNumber"
+            element={<PropertyDetails />}
+          />
+          <Route path="/profilePage" element={<ProfilePage />} />
+        </Route>
         {/* Admin Panel pages */}
-        <Route path="/adminPanel" element={<Properties />} />
-        <Route path="/adminPanel/addProperty" element={<AddProperty />} />
-        <Route path="/purchaseRequests" element={<PurchaseRequests />} />
-        <Route path="/usersList" element={<UsersList />} />
-        <Route path="/rentDetails" element={<RentDetails />} />
-        <Route path="/bankDetails" element={<BankDetails />} />
-        <Route path="/addBank" element={<AddBank />} />
+        <Route element={<Adminprivate />}>
+          <Route path="/adminPanel" element={<Properties />} />
+          <Route path="/adminPanel/addProperty" element={<AddProperty />} />
+          <Route path="/moneyRequests" element={<PurchaseRequests />} />
+          <Route path="/usersList" element={<UsersList />} />
+          <Route path="/rentDetails" element={<RentDetails />} />
+          <Route path="/bankDetails" element={<BankDetails />} />
+          <Route path="/addBank" element={<AddBank />} />
+        </Route>
       </Routes>
     </>
   );

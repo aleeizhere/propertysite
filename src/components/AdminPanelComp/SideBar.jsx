@@ -8,7 +8,7 @@ import {
   BankOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Divider, Avatar } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const { Content, Sider } = Layout;
 import "../../components/Sidebar.css";
 import styles from "../../style";
@@ -22,6 +22,7 @@ import styles from "../../style";
 // }));
 
 const SideBar = ({ component, selectedKey }) => {
+  const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -34,9 +35,9 @@ const SideBar = ({ component, selectedKey }) => {
   const menus = [
     { name: "Properties", icon: WalletOutlined, linkTo: "/adminPanel" },
     {
-      name: "Purchase Requests",
+      name: "Money Requests",
       icon: MoneyCollectOutlined,
-      linkTo: "/purchaseRequests",
+      linkTo: "/moneyRequests",
     },
     { name: "Users List", icon: UserOutlined, linkTo: "/usersList" },
     { name: "Rent", icon: MoneyCollectOutlined, linkTo: "/rentDetails" },
@@ -93,7 +94,13 @@ const SideBar = ({ component, selectedKey }) => {
           <Divider />
 
           <Menu.Item key={6}>
-            <div className="flex items-center gap-2">
+            <div
+              className="flex items-center gap-2"
+              onClick={() => {
+                localStorage.clear();
+                navigate("/");
+              }}
+            >
               <Avatar
                 icon={<LogoutOutlined />}
                 className={`${styles.flexCenter}`}

@@ -1,12 +1,10 @@
 import React from "react";
 import styles from "../style";
 
-const CustomButton = ({ text, type, stateAction, newState }) => {
+const CustomButton = ({ text, type, stateAction, newState, ...rest }) => {
   return (
     <button
-      // onClick={() => {
-      //   stateAction(newState);
-      // }}
+      {...rest}
       type={type}
       className={`bg-lightGreen p-2 w-full rounded-lg text-white mt-5 relative group focus:ring-4 focus:ring-blue-300 focus:outline-none ${styles.flexCenter} ${styles.boldText}`}
     >
