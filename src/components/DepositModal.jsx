@@ -9,7 +9,7 @@ const DepositModal = ({ open, setopen, children }) => {
           setopen(false);
         }}
       ></div>
-      <div className="absolute top-1/2 w-[40%] -translate-y-[100%] left-1/2 -translate-x-1/2 p-3 bg-white ring-1 ring-gray-200 rounded-md shadow-lg">
+      <div className="absolute z-20 top-[50vh] w-[40%] left-1/2 -translate-y-1/2 -translate-x-1/2 p-3 bg-white ring-1 ring-gray-200 rounded-md shadow-lg">
         {children}
       </div>
     </>

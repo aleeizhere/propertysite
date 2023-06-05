@@ -104,9 +104,10 @@ const PropertyDetailsTab = () => {
     financialDetails,
     fundingTimeline,
     locationDetails,
+    image,
   } = property;
 
-  console.log(property);
+  // console.log(property);
 
   return (
     <div className="">
@@ -116,7 +117,7 @@ const PropertyDetailsTab = () => {
         Portfolio {">"}{" "}
         <span className="font-light text-base"> {"Property Name"} </span>{" "}
       </h1>
-      <ImageSlider />
+      <ImageSlider url={image} />
 
       <div className="flex flex-col-reverse md:flex-row">
         <div className="md:w-[65%] md:p-5 p-2">

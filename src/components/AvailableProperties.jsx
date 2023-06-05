@@ -26,6 +26,7 @@ const AvailableProperties = () => {
               financialDetails,
               fundingTimeline,
               locationDetails,
+              image,
             } = property;
             return (
               <PropertyCard
@@ -39,7 +40,7 @@ const AvailableProperties = () => {
                 annualReturn={`${financialDetails.valueAppr}%`}
                 lowestAmount={`$ ${lowestValue}`}
                 rent={`$ ${financialDetails.rent}`}
-                propertyImg={propertyImg}
+                propertyImg={image}
               />
             );
           })}

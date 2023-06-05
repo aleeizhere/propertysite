@@ -53,22 +53,24 @@ const PurchaseRequestsTab = () => {
     (state) => state.financesSliceAdmin.moneyRequests
   );
 
-  const data = finances.map((f, ind) => {
-    let totalAmount = 0;
-    f.moneyAddRequest.forEach((x) => {
-      totalAmount += x.amount;
-    });
-    return {
-      key: ind,
-      email: f.email,
-      name: f.profile.name,
-      amount: totalAmount.toLocaleString(),
-      phNo: f.profile.phoneNumber,
-      wallet: f.profile.wallet.totalAmount.toLocaleString(),
-      moneyRequest: f.moneyAddRequest,
-      profile: f.profile,
-    };
-  });
+  const data = finances
+    ? finances.map((f, ind) => {
+        let totalAmount = 0;
+        f.moneyAddRequest.forEach((x) => {
+          totalAmount += x.amount;
+        });
+        return {
+          key: ind,
+          email: f.email,
+          name: f.profile.name,
+          amount: totalAmount.toLocaleString(),
+          phNo: f.profile.phoneNumber,
+          wallet: f.profile.wallet.totalAmount.toLocaleString(),
+          moneyRequest: f.moneyAddRequest,
+          profile: f.profile,
+        };
+      })
+    : [];
 
   const expandedRowRender = () => {
     const columns = [
@@ -190,7 +192,7 @@ const PurchaseRequestsTab = () => {
               return {
                 key: ind,
                 tId: f.transactionId,
-                reqDate: f.reqDate,
+                reqDate: new Date(f.reqDate).toDateString(),
                 amount: f.amount.toLocaleString(),
                 receipt: f.imageLink,
                 accept: record.profile._id,

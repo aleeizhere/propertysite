@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const financesSliceAdmin = createSlice({
-  name: "auth",
+  name: "financesAdmin",
   initialState: { moneyRequests: null },
   reducers: {
     setFinances(state, action) {

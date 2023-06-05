@@ -12,6 +12,8 @@ import { Link, useNavigate } from "react-router-dom";
 const { Content, Sider } = Layout;
 import "../../components/Sidebar.css";
 import styles from "../../style";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../store/authSlice";
 
 // const items = [
 //   UploadOutlined, UserOutlined, VideoCameraOutlined
@@ -24,6 +26,8 @@ import styles from "../../style";
 const SideBar = ({ component, selectedKey }) => {
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const dispatch = useDispatch();
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -97,7 +101,7 @@ const SideBar = ({ component, selectedKey }) => {
             <div
               className="flex items-center gap-2"
               onClick={() => {
-                localStorage.clear();
+                dispatch(authActions.removeAuth());
                 navigate("/");
               }}
             >

@@ -9,6 +9,9 @@ import axios from "axios";
 import { backend_url } from "../../../api";
 import { getProperties } from "../../../store/propertiesActions";
 import { useDispatch } from "react-redux";
+import DepositModal from "../../../components/DepositModal";
+import CustomButton from "../../../components/CustomButton";
+import { uploadFile } from "../../wallet/imageUpload";
 
 const formHeading = (headingText) => {
   return (
@@ -54,6 +57,41 @@ const AddPropertyForm = () => {
   let error = false;
   const [responseStatus, setresponseStatus] = useState("");
 
+  const [open, setopen] = useState(false);
+  const [previmage, setprevimage] = useState("");
+  const [image, setImage] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
+  const [wait, setwait] = useState(false);
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+    if (file) {
+      if (previmage) {
+        setprevimage(null);
+      }
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        setprevimage(reader.result);
+      };
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setwait(true);
+    try {
+      const imageUrl = await uploadFile(image);
+      setImageUrl(imageUrl);
+      setwait(false);
+      setopen(false);
+    } catch (e) {
+      console.log(e);
+      setwait(false);
+    }
+  };
+
   const formik = useFormik({
     initialValues: {
       propName: "",
@@ -74,7 +112,12 @@ const AddPropertyForm = () => {
     },
     validationSchema: AddPropertySchema,
     onSubmit: async (values, action) => {
-      const payload = { formValues: values, timelineStages, featuresRadio };
+      const payload = {
+        formValues: values,
+        timelineStages,
+        featuresRadio,
+        image: imageUrl,
+      };
 
       try {
         const res = await axios.post(
@@ -243,6 +286,67 @@ const AddPropertyForm = () => {
         Add New Property
       </h1>
 
+      {open && (
+        <DepositModal open={open} setopen={setopen}>
+          <div className="">
+            <h1 className="text-xl text-gray-600">Property Image</h1>
+
+            <div className="w-full h-[10rem] my-8">
+              {previmage ? (
+                <img
+                  className="w-full h-full object-contain"
+                  src={previmage}
+                  alt="Preview"
+                />
+              ) : (
+                <div className="text-center text-gray-400">
+                  upload property image...
+                </div>
+              )}
+            </div>
+            <div className="flex gap-2 justify-center ">
+              <label
+                htmlFor="image-upload"
+                className="w-[25%] cursor-pointer flex items-center justify-center rounded-md ring-light-gray-theme transition-transform active:scale-[0.97]"
+              >
+                <input
+                  type="file"
+                  accept="image/*"
+                  id="image-upload"
+                  onChange={handleImageChange}
+                  style={{ display: "none" }}
+                />
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="rgb(107 114 128)"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z"
+                    />
+                  </svg>
+                </div>
+              </label>
+            </div>
+            <CustomButton
+              text={!wait ? "Submit" : "Please Wait"}
+              onClick={handleSubmit}
+            />
+          </div>
+        </DepositModal>
+      )}
+
       <div className="w-full">
         <form onSubmit={formik.handleSubmit}>
           {formHeading("General Information")}
@@ -280,6 +384,17 @@ const AddPropertyForm = () => {
                   }
                 />
               </div>
+            </div>
+            <div>
+              <button
+                className="w-full my-8 bg-lightGreen text-white rounded-md py-2"
+                onClick={(e) => {
+                  e.preventDefault;
+                  setopen(true);
+                }}
+              >
+                Upload Image
+              </button>
             </div>
           </div>
 

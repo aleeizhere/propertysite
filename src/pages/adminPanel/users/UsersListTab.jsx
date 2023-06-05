@@ -44,20 +44,22 @@ const UsersListTab = () => {
   ];
   //! Columns For main table
 
-  const data = profiles.map((p, ind) => ({
-    key: ind,
-    name: p.name,
-    phone: p.phoneNumber,
-    noProps: p.portfolio.length,
-    totalInv: p.totalInvestment.toLocaleString(),
-    totalEarn: p.totalEarning.toLocaleString(),
-    portfolio: p.portfolio,
-  }));
-  console.log(profiles);
-
   useEffect(() => {
     dispatch(fetchProfiles());
   }, []);
+
+  const data = profiles
+    ? profiles.map((p, ind) => ({
+        key: ind,
+        name: p.name,
+        phone: p.phoneNumber,
+        noProps: p.portfolio.length,
+        totalInv: p.totalInvestment.toLocaleString(),
+        totalEarn: p.totalEarning.toLocaleString(),
+        portfolio: p.portfolio,
+      }))
+    : [];
+  // console.log(profiles);
 
   // !Expandable Table Data
   const expandedRowRender = (record) => {

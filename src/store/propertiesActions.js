@@ -25,21 +25,27 @@ export const getProperties = () => {
     }
   };
 };
-export const getAdminProperties = () => {
+export const getAdminProperties = (client) => {
   return async (dispatch) => {
     try {
-      const res = await axios.get(backend_url + "getproperties");
+      const res = await axios.get(backend_url + "client/getproperties");
 
       let available = [];
       let funded = [];
-      res.data.forEach((prop) => {
+
+      res.data.data.forEach((prop) => {
         if (prop.isAvailable) {
           available.push(prop);
         } else {
           funded.push(prop);
         }
       });
-      dispatch(propertiesActions.setProperties({ available, funded }));
+
+      if (client === "admin") {
+        dispatch(propertiesActions.setAdminProperties({ available, funded }));
+      } else {
+        dispatch(propertiesActions.setProperties({ available, funded }));
+      }
     } catch (e) {
       console.log("get properties broken because ", e);
     }
