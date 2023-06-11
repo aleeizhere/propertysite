@@ -87,13 +87,9 @@ const SidebarLayout = ({ component, selectedKey }) => {
           style={{ fontFamily: "Poppins" }}
         >
           <Menu.Item key={0} style={{ height: "50px", margin: "10px" }}>
-            <Link to="/landingPage">
+            <Link to="/">
               {/* <img src={logo} alt="" /> */}
-              <img
-                src="https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/secured-attachments/messaging_message/attachment/34b888a1ed89f4cfe853df9f4e05b364-1675240313820/logo%20600.png?__cld_token__=exp=1675861231~hmac=c2ab20b9f43a516b7ad1ea9fb6649463aba0f4641206da44c100a4f060502844"
-                alt=""
-                className="w-9/12"
-              />
+              <img src="/logo.webp" alt="" className="w-9/12" />
             </Link>
           </Menu.Item>
           <Divider />

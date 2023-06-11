@@ -25,11 +25,7 @@ const LoginForm = () => {
     <div className="w-11/12 md:w-4/5 m-auto">
       <div className={`${styles.flexCenter} p-10`}>
         {/* <img src={logo} alt="" /> */}
-        <img
-          src="https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/secured-attachments/messaging_message/attachment/34b888a1ed89f4cfe853df9f4e05b364-1675240313820/logo%20600.png?__cld_token__=exp=1675861231~hmac=c2ab20b9f43a516b7ad1ea9fb6649463aba0f4641206da44c100a4f060502844"
-          alt=""
-          className="w-48"
-        />
+        <img src="/logo.webp" alt="" className="w-48" />
       </div>
 
       <h1 className={`${styles.boldText} mb-2`}>Email Address</h1>

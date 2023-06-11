@@ -8,7 +8,7 @@ const SignUp = () => {
     <>
       {/* Logo for mid screen */}
       <div className={`${styles.flexCenter} p-7 shadow-sm lg:hidden`}>
-        <img src={logo} alt="Logo" className="w-20" />
+        <img src="/logo.webp" alt="Logo" className="w-20" />
       </div>
 
       <div className="flex">

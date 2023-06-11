@@ -16,7 +16,7 @@ const Login = () => {
       if (authState.profile.role === "user") {
         navigate("/homepage", { replace: true });
       } else {
-        navigate("adminPanel");
+        navigate("/adminPanel", { replace: true });
       }
     }
   }, [authState]);

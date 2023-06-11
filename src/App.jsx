@@ -29,19 +29,19 @@ function App() {
       {/* <VerfiyPhone /> */}
 
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/confirmEmail" element={<ConfirmEmail />} />
         <Route path="/createPassword" element={<CreatePassword />} />
         <Route path="/phNumber" element={<PhoneNumber />} />
         <Route path="/verifyNum" element={<VerfiyPhone />} />
         {/* Protected Routes */}
+        <Route path="/login" element={<Login />} />
         <Route element={<PrivateRoutes />}>
           <Route path="/homePage" element={<HomePage />} />
           <Route path="/wallet" element={<Wallet />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/landingPage" element={<LandingPage />} />
           <Route
             path="/property/:propertyNumber"
             element={<PropertyDetails />}

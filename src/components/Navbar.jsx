@@ -7,21 +7,17 @@ import menu from "../assets/menu2.svg";
 
 const navLinks = [
   {
-    id: "portfolio",
-    title: "My Investments",
+    id: "login",
+    title: "Login",
   },
-  {
-    id: "homePage",
-    title: "Properties",
-  },
-  {
-    id: "sell",
-    title: "Sell",
-  },
-  {
-    id: "user",
-    title: "Jhon",
-  },
+  // {
+  //   id: "login",
+  //   title: "Properties",
+  // },
+  // {
+  //   id: "login",
+  //   title: "Sell",
+  // },
 ];
 
 const Navbar = () => {
@@ -30,11 +26,7 @@ const Navbar = () => {
 
   return (
     <nav className="w-full flex py-6 justify-between items-center">
-      <img
-        src="https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/secured-attachments/messaging_message/attachment/34b888a1ed89f4cfe853df9f4e05b364-1675240313820/logo%20600.png?__cld_token__=exp=1675861231~hmac=c2ab20b9f43a516b7ad1ea9fb6649463aba0f4641206da44c100a4f060502844"
-        alt="logo"
-        className="w-[124px] cursor-pointer"
-      />
+      <img src="/logo.webp" alt="logo" className="w-[124px] cursor-pointer" />
 
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {navLinks.map((nav, index) => (

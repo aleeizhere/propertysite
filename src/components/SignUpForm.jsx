@@ -35,7 +35,7 @@ const SignUpForm = () => {
     <>
       {screen === "1" && (
         <div className="w-full">
-          <h2 className={`${styles.boldText} text-2xl`}>Join Stake</h2>
+          <h2 className={`${styles.boldText} text-2xl`}>Join Upstake</h2>
 
           <form onSubmit={handleSubmit}>
             <div className="mt-10">
@@ -62,7 +62,7 @@ const SignUpForm = () => {
 
           <h1 className={`${styles.boldText} pt-5`}>
             Already a member?{" "}
-            <Link to={"/"} className="text-lightGreen cursor-pointer">
+            <Link to={"/login"} className="text-lightGreen cursor-pointer">
               {" "}
               Sign In
             </Link>{" "}
